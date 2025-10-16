@@ -5,14 +5,14 @@ export default function LoLItemCompass() {
   const [filtersEnabled, setFiltersEnabled] = useState(true);
   const [selectedFilters, setSelectedFilters] = useState([]);
 
-  // Klick außerhalb schließt Tooltip
+  //Click outside to close tooltip
   useEffect(() => {
     const handleClickOutside = () => setActiveItem(null);
     window.addEventListener("click", handleClickOutside);
     return () => window.removeEventListener("click", handleClickOutside);
   }, []);
 
-  // Itemdaten (Positionen bleiben gleich)
+  // Different Items
   const items = [
     {
       name: "Wits End",
@@ -192,6 +192,7 @@ export default function LoLItemCompass() {
       },
   ];
 
+    //Different Categories "General" for shared categories, "Specific" for more niche ones
     const filterGroups = {
         General: [
             "Enemy team tanky",
@@ -276,7 +277,7 @@ export default function LoLItemCompass() {
                     overflow: "visible",
                 }}
             >
-                {/* Achsen */}
+                {/* Axis */}
                 <div
                     style={{
                         position: "absolute",
@@ -300,7 +301,7 @@ export default function LoLItemCompass() {
                     }}
                 />
 
-                {/* Achsenbeschriftung */}
+                {/* Axis Label */}
                 <div
                     style={{
                         position: "absolute",
@@ -356,9 +357,8 @@ export default function LoLItemCompass() {
 
 
                 {/* Items */}
+                {/* Weighs niche situations more than general ones*/}
                 {filteredItems.map((item) => {
-                    // 🔥 Anzahl der übereinstimmenden Kategorien
-                    // ⚙️ Punktzahl basierend auf Filtergruppen
                     let matchScore = 0;
                     if (filtersEnabled) {
                         item.categories.forEach((cat) => {
@@ -370,7 +370,7 @@ export default function LoLItemCompass() {
                     }
 
 
-// 🔥 Glow & Skalierung abhängig von matchScore
+                    // increases glow based on matching categories
                     const scaleValue =
                         matchScore >= 3 ? 1.25 : matchScore >= 2 ? 1.15 : 1.0;
 
