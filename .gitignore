@@ -1,4 +1,6 @@
+# =========================
 # Logs
+# =========================
 logs
 *.log
 npm-debug.log*
@@ -7,12 +9,18 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# =========================
+# Node modules & Build
+# =========================
 node_modules
 dist
 dist-ssr
 *.local
+.npm
 
-# Editor directories and files
+# =========================
+# Editor / IDE
+# =========================
 .vscode/*
 !.vscode/extensions.json
 .idea
@@ -22,3 +30,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# =========================
+# Optional: System files
+# =========================
+Thumbs.db
