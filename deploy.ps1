@@ -17,14 +17,14 @@ git commit -m "$msg"
 git push origin Feature
 
 # Auf Main wechseln & pullen
-git checkout Main
-git pull origin Main
+git checkout main
+git pull origin main
 
 # Feature in Main mergen
 git merge Feature
 
 # Main pushen
-git push origin Main
+git push origin main
 
 # Optional deployen
 npm run deploy
