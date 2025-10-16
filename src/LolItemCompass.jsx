@@ -67,8 +67,8 @@ export default function LoLItemCompass() {
           img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/223157.png",
           x: 120,
           y: -170,
-          desc: "Enemy Dive - Resets",
-          categories: ["Much Single target CC", "Resets (Jinx, Viego)"],
+          desc: "Enemy Dive Comp - Enemy has Resets - Yi/Olaf ult...",
+          categories: ["Heavy AD", "Resets (Jinx, Viego...)"],
       },
       {
           name: "Cosmic Drive",
@@ -84,7 +84,7 @@ export default function LoLItemCompass() {
           x: -80,
           y: -120,
           desc: "Always",
-          categories: ["Enemy team tanky", "Heavy AD", "Heavy AP", "Own team 2+ AP Carries", "Heavy Front line", "Long Fights", "Ahead", "Behind", "Much CC", "Much Single target CC", "Many shields", "Much AOE", "2+ Autoattackers", "2+ Crits", "Lack Waveclear"]
+          categories: [""]
       },
       {
           name: "Force of Nature",
@@ -214,7 +214,7 @@ export default function LoLItemCompass() {
             "2+ Autoattackers",
             "2+ Crits",
             "Lack Waveclear",
-            "Resets (Jinx, Viego)",
+            "Resets (Jinx, Viego...)",
             "1 Carry in Team",
         ],
     };
