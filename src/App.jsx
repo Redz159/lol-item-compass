@@ -3,12 +3,12 @@ import ItemCompass from "./LolItemCompass";
 import BuildPlanner from "./BuildPlanner";
 
 export default function App() {
-    const [activeTab, setActiveTab] = useState("planner");
+    const [activeTab, setActiveTab] = useState("compass");
 
     return (
         <div className="min-h-screen bg-gray-900 text-white flex flex-col justify-start items-start p-4">  {/* Füge items-start hinzu, um links auszurichten */}
             {/* Tab-Leiste */}
-            <div className="flex space-x-4 mb-2" style={{ marginLeft: '18px' }}>
+            <div style={{display: 'flex', gap: '8px', marginLeft: '18px', marginBottom: '8px'}}>
                 <button
                     onClick={() => setActiveTab("compass")}
                     className={`px-4 py-2 rounded-xl transition ${

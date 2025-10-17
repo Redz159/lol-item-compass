@@ -26,5 +26,8 @@ git merge Feature
 # Main pushen
 git push origin main
 
-# Optional deployen
+# baut dist
+npm run build
+
+# deployed auf Seite
 npm run deploy
