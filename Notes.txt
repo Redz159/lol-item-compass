@@ -1,25 +1,9 @@
 Reset Button
-Filter auf der rechten Seite
-General:
-Enemy team tanky
-Heavy AD
-Heavy AP
-Own team 2+ AP Carries
-Heavy Front line
-Long Fights
-
-
-Specific:
-Ahead
-Behind
-Much CC
-Much Single target CC
-Many shields
-Much AOE
-2+ Autoattackers
-2+ Crits
-Lack Waveclear
 
 ----------------------------------
 
 2nd Page
+Reset Button?
+Teams randomized
+
+Save between tabs
