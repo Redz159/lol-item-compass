@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import{items} from "./items";
 
 export default function LoLItemCompass() {
+
   const [activeItem, setActiveItem] = useState(null);
   const [filtersEnabled, setFiltersEnabled] = useState(true);
   const [selectedFilters, setSelectedFilters] = useState([]);
@@ -13,184 +15,7 @@ export default function LoLItemCompass() {
   }, []);
 
   // Different Items
-  const items = [
-    {
-      name: "Wits End",
-      img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3091.png",
-      x: 60,
-      y: -200,
-      desc: "Against high AP and CC",
-      categories: ["Heavy AP", "Much CC"]
-    },
-      {
-          name: "Terminus",
-          img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/223302.png",
-          x: 170,
-          y: -230,
-          desc: "Late game - Long Fights",
-          categories: ["Long Fights", "Mixed Dmg"],
-      },
-      {
-          name: "Riftmaker",
-          img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/4633.png",
-          x: 240,
-          y: -220,
-          desc: "More damage - Long Fights",
-          categories: ["Long Fights"],
-      },
-      {
-          name: "Liandry's Torment",
-          img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/7012.png",
-          x: 290,
-          y: -160,
-          desc: "HP Stacking - Meele Frontline",
-          categories: ["Heavy Front line", "Enemy team tanky"],
-      },
-      {
-          name: "Experimental Hexplate",
-          img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/7036.png",
-          x: 360,
-          y: -190,
-          desc: "Really big lead - Reposition for Q",
-          categories: ["Ahead"],
-      },
-      {
-          name: "Statikk Shiv",
-          img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3087.png",
-          x: 410,
-          y: -240,
-          desc: "Lack Waveclear - Teamfights",
-          categories: ["Lack Waveclear"],
-      },
-      {
-          name: "Zhonya's Hourglass",
-          img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/223157.png",
-          x: 120,
-          y: -170,
-          desc: "Enemy Dive Comp - Enemy has Resets - Yi/Olaf ult...",
-          categories: ["Heavy AD", "Resets (Jinx, Viego...)"],
-      },
-      {
-          name: "Cosmic Drive",
-          img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/4629.png",
-          x: 380,
-          y: -120,
-          desc: "Need AH (more Ults) - Fast enemies, eg. Sivir, Vayne",
-          categories: ["Long Fights", "Fast enemies"],
-      },
-      {
-          name: "Dead Man's plate",
-          img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3742.png",
-          x: -80,
-          y: -120,
-          desc: "Always",
-          categories: [""]
-      },
-      {
-          name: "Force of Nature",
-          img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/4401.png",
-          x: -320,
-          y: -210,
-          desc: "Need MR - Long Fights",
-          categories: ["Heavy AP", "Long Fights"],
-      },
-      {
-          name: "Randuin's Omen",
-          img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3143.png",
-          x: -380,
-          y: -150,
-          desc: "2+ Critters - Need Armor",
-          categories: ["2+ Crits", "Heavy AD"],
-      },
-      {
-          name: "Kaenic Rookern",
-          img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/2504.png",
-          x: -390,
-          y: -220,
-          desc: "Need MR - Enemy Poke",
-          categories: ["Heavy AP", "Enemy Poke"],
-      },
-      {
-          name: "Jak'Sho, The Protean",
-          img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/6665.png",
-          x: -450,
-          y: -240,
-          desc: "Mixed Dmg",
-          categories: ["Mixed Dmg", "Long Fights"],
-      },
-      {
-          name: "Redemption",
-          img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3107.png",
-          x: -240,
-          y: 245,
-          desc: "In place Fight",
-          categories: ["Much AOE", "Heavy Front line"],
-      },
-      {
-          name: "Mikael's Blessing",
-          img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3222.png",
-          x: -170,
-          y: 250,
-          desc: "Single Target CC",
-          categories: ["Much Single target CC"],
-      },
-      {
-          name: "Knight's Vow",
-          img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3109.png",
-          x: -310,
-          y: 230,
-          desc: "Single Carry in Team",
-          categories: ["1 Carry in Team"],
-      },
-      {
-          name: "Locket of the Iron Solari",
-          img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3190.png",
-          x: -380,
-          y: 250,
-          desc: "Instant AOE Dmg",
-          categories: ["Much AOE"],
-      },
-      {
-          name: "Frozen Heart",
-          img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3110.png",
-          x: -450,
-          y: 180,
-          desc: "2+ Autoattacker's - Need Armor",
-          categories: ["2+ Autoattackers", "Heavy AD"],
-      },
-      {
-          name: "Abyssal Mask",
-          img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/8020.png",
-          x: 50,
-          y: 80,
-          desc: "Team 2+ AP - Need MR",
-          categories: ["Own team 2+ AP Carries", "Heavy AP"],
-      },
-      {
-          name: "Imperial Mandate",
-          img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/4005.png",
-          x: 380,
-          y: 150,
-          desc: "Behind - Need Dmg Amp",
-          categories: ["Behind"],
-      },
-      {
-          name: "Bloodletter's Curse",
-          img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/4010.png",
-          x: 300,
-          y: 150,
-          desc: "Team 2+ AP Carries",
-          categories: ["Own team 2+ AP Carries"],
-      },
-      {
-          name: "Serpent's Fang",
-          img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/6695.png",
-          x: 400,
-          y: 210,
-          desc: "Against heavy Shield",
-          categories: ["Many shields"],
-      },
-  ];
+
 
     //Different Categories "General" for shared categories, "Specific" for more niche ones
     const filterGroups = {
@@ -258,7 +83,7 @@ export default function LoLItemCompass() {
                 justifyContent: "space-between",
                 alignItems: "flex-start",
                 width: "1800px",
-                margin: "60px auto",
+                margin: "2px auto",
                 gap: "20px",
             }}
         >
@@ -268,7 +93,7 @@ export default function LoLItemCompass() {
             <div
                 style={{
                     position: "relative",
-                    left: "1%",
+                    left: "18px",
                     width: "1564px",
                     height: "880px",
                     background: "#0d0d0d",
@@ -359,6 +184,7 @@ export default function LoLItemCompass() {
                 {/* Items */}
                 {/* Weighs niche situations more than general ones*/}
                 {filteredItems.map((item) => {
+
                     let matchScore = 0;
                     if (filtersEnabled) {
                         item.categories.forEach((cat) => {
