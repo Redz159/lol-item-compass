@@ -100,6 +100,7 @@ export default function LoLItemCompass() {
                     border: "2px solid #333",
                     borderRadius: "16px",
                     overflow: "visible",
+                    marginBottom:"100px"
                 }}
             >
                 {/* Axis */}

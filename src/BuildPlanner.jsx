@@ -135,21 +135,21 @@ export default function BuildPlanner() {
     );
 
     return (
-        <div style={{ marginLeft: "18px", width: "500px", margin: "40px auto" }}>
-            <div style={{ marginBottom: "10px" }}>
-                <strong>Modus:</strong> {mode === "add" ? "Add" : "Exclude"} (1/2)
+        <div style={{margin: "20px auto 0 18px", width: "500px"}}>
+
+            <div style={{marginBottom: "10px"}}>
+                <strong>Modus:</strong> {mode === "add" ? "Add" : "Exclude"} (Press 1/2)
             </div>
 
             {/* Item Grid */}
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "8px 8px", position: "relative" }}>
+            <div style={{display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "8px 8px", position: "relative"}}>
                 {filteredItems.map((item) => {
                     const isExcluded = excludedItems.includes(item.name);
-                    const isViable = viableItems.includes(item.name);
 
                     return (
                         <div
                             key={item.name}
-                            style={{ position: "relative", width: "60px", height: "60px", cursor: "pointer" }}
+                            style={{position: "relative", width: "60px", height: "60px", cursor: "pointer"}}
                             onClick={() => handleItemClick(item)}
                         >
                             <img
@@ -220,9 +220,9 @@ export default function BuildPlanner() {
             </div>
 
             {/* Boots */}
-            <div style={{ marginTop: "20px" }}>
+            <div style={{marginTop: "20px"}}>
                 <h3>Boots:</h3>
-                <div style={{ display: "flex", gap: "10px" }}>
+                <div style={{display: "flex", gap: "10px"}}>
                     {boots.map((boot) => (
                         <img
                             key={boot.name}
@@ -242,9 +242,9 @@ export default function BuildPlanner() {
             </div>
 
             {/* Viable Items */}
-            <div style={{ marginTop: "20px" }}>
+            <div style={{marginTop: "20px"}}>
                 <h3>Viable Items:</h3>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
+                <div style={{display: "flex", flexWrap: "wrap", gap: "10px"}}>
                     {viableItems.map((name) => {
                         const item = items.find((i) => i.name === name);
                         return (
@@ -269,9 +269,9 @@ export default function BuildPlanner() {
             </div>
 
             {/* Build Roster */}
-            <div style={{ marginTop: "20px" }}>
+            <div style={{marginTop: "20px", marginBottom:"300px"}}>
                 <h3>Build Roster:</h3>
-                <div style={{ display: "flex", gap: "8px" }}>
+                <div style={{display: "flex", gap: "8px"}}>
                     {buildRoster.map((slot, idx) => (
                         <div
                             key={idx}
