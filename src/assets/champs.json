@@ -1,0 +1,1262 @@
+[
+  {
+    "Position": "3",
+    "Name": "Kai'Sa",
+    "Role": "AD Carry",
+    "Pickrate": "21.2%"
+  },
+  {
+    "Position": "4",
+    "Name": "Caitlyn",
+    "Role": "AD Carry",
+    "Pickrate": "19.9%"
+  },
+  {
+    "Position": "5",
+    "Name": "Jhin",
+    "Role": "AD Carry",
+    "Pickrate": "14.2%"
+  },
+  {
+    "Position": "6",
+    "Name": "Jinx",
+    "Role": "AD Carry",
+    "Pickrate": "15.9%"
+  },
+  {
+    "Position": "7",
+    "Name": "Ashe",
+    "Role": "AD Carry",
+    "Pickrate": "13.9%"
+  },
+  {
+    "Position": "8",
+    "Name": "Thresh",
+    "Role": "Support",
+    "Pickrate": "13.1%"
+  },
+  {
+    "Position": "9",
+    "Name": "Lee Sin",
+    "Role": "Jungle",
+    "Pickrate": "12.7%"
+  },
+  {
+    "Position": "11",
+    "Name": "Smolder",
+    "Role": "AD Carry",
+    "Pickrate": "10.4%"
+  },
+  {
+    "Position": "12",
+    "Name": "Ezreal",
+    "Role": "AD Carry",
+    "Pickrate": "10.1%"
+  },
+  {
+    "Position": "13",
+    "Name": "Nami",
+    "Role": "Support",
+    "Pickrate": "10.2%"
+  },
+  {
+    "Position": "14",
+    "Name": "Miss Fortune",
+    "Role": "AD Carry",
+    "Pickrate": "7.8%"
+  },
+  {
+    "Position": "15",
+    "Name": "Viego",
+    "Role": "Jungle",
+    "Pickrate": "10.0%"
+  },
+  {
+    "Position": "16",
+    "Name": "Lulu",
+    "Role": "Support",
+    "Pickrate": "10.3%"
+  },
+  {
+    "Position": "17",
+    "Name": "Jarvan IV",
+    "Role": "Jungle",
+    "Pickrate": "9.3%"
+  },
+  {
+    "Position": "18",
+    "Name": "Diana",
+    "Role": "Jungle",
+    "Pickrate": "9.0%"
+  },
+  {
+    "Position": "19",
+    "Name": "Nautilus",
+    "Role": "Support",
+    "Pickrate": "9.3%"
+  },
+  {
+    "Position": "20",
+    "Name": "Aatrox",
+    "Role": "Top",
+    "Pickrate": "9.0%"
+  },
+  {
+    "Position": "21",
+    "Name": "Lucian",
+    "Role": "AD Carry",
+    "Pickrate": "9.1%"
+  },
+  {
+    "Position": "22",
+    "Name": "Milio",
+    "Role": "Support",
+    "Pickrate": "9.0%"
+  },
+  {
+    "Position": "23",
+    "Name": "Garen",
+    "Role": "Top",
+    "Pickrate": "8.0%"
+  },
+  {
+    "Position": "24",
+    "Name": "Yasuo",
+    "Role": "Mid",
+    "Pickrate": "8.5%"
+  },
+  {
+    "Position": "25",
+    "Name": "Lux",
+    "Role": "Support",
+    "Pickrate": "6.9%"
+  },
+  {
+    "Position": "26",
+    "Name": "Kayn",
+    "Role": "Jungle",
+    "Pickrate": "7.2%"
+  },
+  {
+    "Position": "27",
+    "Name": "Karma",
+    "Role": "Support",
+    "Pickrate": "7.9%"
+  },
+  {
+    "Position": "28",
+    "Name": "Ahri",
+    "Role": "Mid",
+    "Pickrate": "7.2%"
+  },
+  {
+    "Position": "29",
+    "Name": "Kha'Zix",
+    "Role": "Jungle",
+    "Pickrate": "7.3%"
+  },
+  {
+    "Position": "30",
+    "Name": "Yunara",
+    "Role": "AD Carry",
+    "Pickrate": "7.9%"
+  },
+  {
+    "Position": "31",
+    "Name": "Malzahar",
+    "Role": "Mid",
+    "Pickrate": "6.7%"
+  },
+  {
+    "Position": "32",
+    "Name": "Malphite",
+    "Role": "Top",
+    "Pickrate": "7.2%"
+  },
+  {
+    "Position": "33",
+    "Name": "Sett",
+    "Role": "Top",
+    "Pickrate": "7.0%"
+  },
+  {
+    "Position": "34",
+    "Name": "Sylas",
+    "Role": "Mid",
+    "Pickrate": "7.5%"
+  },
+  {
+    "Position": "35",
+    "Name": "Sylas",
+    "Role": "Jungle",
+    "Pickrate": "7.4%"
+  },
+  {
+    "Position": "36",
+    "Name": "Sion",
+    "Role": "Top",
+    "Pickrate": "6.9%"
+  },
+  {
+    "Position": "37",
+    "Name": "Vayne",
+    "Role": "AD Carry",
+    "Pickrate": "6.8%"
+  },
+  {
+    "Position": "38",
+    "Name": "Orianna",
+    "Role": "Mid",
+    "Pickrate": "6.6%"
+  },
+  {
+    "Position": "39",
+    "Name": "Katarina",
+    "Role": "Mid",
+    "Pickrate": "7.0%"
+  },
+  {
+    "Position": "40",
+    "Name": "Akali",
+    "Role": "Mid",
+    "Pickrate": "7.0%"
+  },
+  {
+    "Position": "41",
+    "Name": "Morgana",
+    "Role": "Support",
+    "Pickrate": "6.5%"
+  },
+  {
+    "Position": "42",
+    "Name": "Mordekaiser",
+    "Role": "Top",
+    "Pickrate": "6.9%"
+  },
+  {
+    "Position": "43",
+    "Name": "Darius",
+    "Role": "Top",
+    "Pickrate": "7.0%"
+  },
+  {
+    "Position": "44",
+    "Name": "Bard",
+    "Role": "Support",
+    "Pickrate": "6.4%"
+  },
+  {
+    "Position": "45",
+    "Name": "Leona",
+    "Role": "Support",
+    "Pickrate": "6.3%"
+  },
+  {
+    "Position": "46",
+    "Name": "Aphelios",
+    "Role": "AD Carry",
+    "Pickrate": "6.4%"
+  },
+  {
+    "Position": "47",
+    "Name": "Pyke",
+    "Role": "Support",
+    "Pickrate": "6.5%"
+  },
+  {
+    "Position": "48",
+    "Name": "LeBlanc",
+    "Role": "Mid",
+    "Pickrate": "6.4%"
+  },
+  {
+    "Position": "49",
+    "Name": "Zed",
+    "Role": "Mid",
+    "Pickrate": "6.5%"
+  },
+  {
+    "Position": "50",
+    "Name": "Blitzcrank",
+    "Role": "Support",
+    "Pickrate": "6.2%"
+  },
+  {
+    "Position": "51",
+    "Name": "Jax",
+    "Role": "Top",
+    "Pickrate": "6.1%"
+  },
+  {
+    "Position": "52",
+    "Name": "Master Yi",
+    "Role": "Jungle",
+    "Pickrate": "5.7%"
+  },
+  {
+    "Position": "53",
+    "Name": "Syndra",
+    "Role": "Mid",
+    "Pickrate": "5.6%"
+  },
+  {
+    "Position": "54",
+    "Name": "Sivir",
+    "Role": "AD Carry",
+    "Pickrate": "5.7%"
+  },
+  {
+    "Position": "55",
+    "Name": "Graves",
+    "Role": "Jungle",
+    "Pickrate": "5.1%"
+  },
+  {
+    "Position": "56",
+    "Name": "Soraka",
+    "Role": "Support",
+    "Pickrate": "5.5%"
+  },
+  {
+    "Position": "57",
+    "Name": "Xin Zhao",
+    "Role": "Jungle",
+    "Pickrate": "5.6%"
+  },
+  {
+    "Position": "58",
+    "Name": "Xayah",
+    "Role": "AD Carry",
+    "Pickrate": "4.8%"
+  },
+  {
+    "Position": "59",
+    "Name": "Zed",
+    "Role": "Jungle",
+    "Pickrate": "5.9%"
+  },
+  {
+    "Position": "60",
+    "Name": "Mel",
+    "Role": "Mid",
+    "Pickrate": "5.7%"
+  },
+  {
+    "Position": "61",
+    "Name": "Dr. Mundo",
+    "Role": "Top",
+    "Pickrate": "5.1%"
+  },
+  {
+    "Position": "62",
+    "Name": "Rakan",
+    "Role": "Support",
+    "Pickrate": "4.5%"
+  },
+  {
+    "Position": "63",
+    "Name": "Veigar",
+    "Role": "Mid",
+    "Pickrate": "4.5%"
+  },
+  {
+    "Position": "64",
+    "Name": "Qiyana",
+    "Role": "Jungle",
+    "Pickrate": "5.8%"
+  },
+  {
+    "Position": "65",
+    "Name": "Yone",
+    "Role": "Mid",
+    "Pickrate": "5.0%"
+  },
+  {
+    "Position": "66",
+    "Name": "Tristana",
+    "Role": "AD Carry",
+    "Pickrate": "5.0%"
+  },
+  {
+    "Position": "67",
+    "Name": "Ryze",
+    "Role": "Mid",
+    "Pickrate": "4.6%"
+  },
+  {
+    "Position": "68",
+    "Name": "Nocturne",
+    "Role": "Jungle",
+    "Pickrate": "4.9%"
+  },
+  {
+    "Position": "69",
+    "Name": "Samira",
+    "Role": "AD Carry",
+    "Pickrate": "4.8%"
+  },
+  {
+    "Position": "70",
+    "Name": "Ambessa",
+    "Role": "Top",
+    "Pickrate": "5.4%"
+  },
+  {
+    "Position": "71",
+    "Name": "K'Sante",
+    "Role": "Top",
+    "Pickrate": "5.4%"
+  },
+  {
+    "Position": "72",
+    "Name": "Renekton",
+    "Role": "Top",
+    "Pickrate": "5.2%"
+  },
+  {
+    "Position": "73",
+    "Name": "Hwei",
+    "Role": "Mid",
+    "Pickrate": "5.0%"
+  },
+  {
+    "Position": "74",
+    "Name": "Jax",
+    "Role": "Jungle",
+    "Pickrate": "4.8%"
+  },
+  {
+    "Position": "75",
+    "Name": "Seraphine",
+    "Role": "Support",
+    "Pickrate": "4.4%"
+  },
+  {
+    "Position": "76",
+    "Name": "Braum",
+    "Role": "Support",
+    "Pickrate": "4.9%"
+  },
+  {
+    "Position": "77",
+    "Name": "Yuumi",
+    "Role": "Support",
+    "Pickrate": "5.0%"
+  },
+  {
+    "Position": "78",
+    "Name": "Twisted Fate",
+    "Role": "Mid",
+    "Pickrate": "4.0%"
+  },
+  {
+    "Position": "79",
+    "Name": "Fizz",
+    "Role": "Mid",
+    "Pickrate": "4.4%"
+  },
+  {
+    "Position": "80",
+    "Name": "Morgana",
+    "Role": "Mid",
+    "Pickrate": "4.8%"
+  },
+  {
+    "Position": "81",
+    "Name": "Viktor",
+    "Role": "Mid",
+    "Pickrate": "4.5%"
+  },
+  {
+    "Position": "82",
+    "Name": "Briar",
+    "Role": "Jungle",
+    "Pickrate": "4.2%"
+  },
+  {
+    "Position": "83",
+    "Name": "Lux",
+    "Role": "Mid",
+    "Pickrate": "4.1%"
+  },
+  {
+    "Position": "84",
+    "Name": "Ornn",
+    "Role": "Top",
+    "Pickrate": "3.9%"
+  },
+  {
+    "Position": "85",
+    "Name": "Cho'Gath",
+    "Role": "Top",
+    "Pickrate": "3.8%"
+  },
+  {
+    "Position": "86",
+    "Name": "Alistar",
+    "Role": "Support",
+    "Pickrate": "4.6%"
+  },
+  {
+    "Position": "87",
+    "Name": "Shaco",
+    "Role": "Jungle",
+    "Pickrate": "4.3%"
+  },
+  {
+    "Position": "88",
+    "Name": "Draven",
+    "Role": "AD Carry",
+    "Pickrate": "4.6%"
+  },
+  {
+    "Position": "89",
+    "Name": "Rengar",
+    "Role": "Jungle",
+    "Pickrate": "4.6%"
+  },
+  {
+    "Position": "90",
+    "Name": "Vi",
+    "Role": "Jungle",
+    "Pickrate": "4.0%"
+  },
+  {
+    "Position": "91",
+    "Name": "Ekko",
+    "Role": "Jungle",
+    "Pickrate": "4.4%"
+  },
+  {
+    "Position": "92",
+    "Name": "Yone",
+    "Role": "Top",
+    "Pickrate": "4.2%"
+  },
+  {
+    "Position": "93",
+    "Name": "Senna",
+    "Role": "Support",
+    "Pickrate": "3.8%"
+  },
+  {
+    "Position": "94",
+    "Name": "Warwick",
+    "Role": "Jungle",
+    "Pickrate": "3.8%"
+  },
+  {
+    "Position": "95",
+    "Name": "Twitch",
+    "Role": "AD Carry",
+    "Pickrate": "4.0%"
+  },
+  {
+    "Position": "96",
+    "Name": "Galio",
+    "Role": "Mid",
+    "Pickrate": "4.2%"
+  },
+  {
+    "Position": "97",
+    "Name": "Wukong",
+    "Role": "Jungle",
+    "Pickrate": "4.2%"
+  },
+  {
+    "Position": "98",
+    "Name": "Shen",
+    "Role": "Top",
+    "Pickrate": "3.9%"
+  },
+  {
+    "Position": "99",
+    "Name": "Volibear",
+    "Role": "Jungle",
+    "Pickrate": "3.9%"
+  },
+  {
+    "Position": "100",
+    "Name": "Amumu",
+    "Role": "Jungle",
+    "Pickrate": "3.3%"
+  },
+  {
+    "Position": "101",
+    "Name": "Xerath",
+    "Role": "Mid",
+    "Pickrate": "3.8%"
+  },
+  {
+    "Position": "102",
+    "Name": "Irelia",
+    "Role": "Top",
+    "Pickrate": "4.2%"
+  },
+  {
+    "Position": "103",
+    "Name": "Yorick",
+    "Role": "Top",
+    "Pickrate": "3.9%"
+  },
+  {
+    "Position": "104",
+    "Name": "Jayce",
+    "Role": "Top",
+    "Pickrate": "3.8%"
+  },
+  {
+    "Position": "105",
+    "Name": "Fiora",
+    "Role": "Top",
+    "Pickrate": "4.1%"
+  },
+  {
+    "Position": "106",
+    "Name": "Varus",
+    "Role": "AD Carry",
+    "Pickrate": "3.5%"
+  },
+  {
+    "Position": "107",
+    "Name": "Gnar",
+    "Role": "Top",
+    "Pickrate": "3.4%"
+  },
+  {
+    "Position": "108",
+    "Name": "Zyra",
+    "Role": "Support",
+    "Pickrate": "3.3%"
+  },
+  {
+    "Position": "109",
+    "Name": "Vladimir",
+    "Role": "Mid",
+    "Pickrate": "3.9%"
+  },
+  {
+    "Position": "110",
+    "Name": "Vel'Koz",
+    "Role": "Support",
+    "Pickrate": "3.2%"
+  },
+  {
+    "Position": "111",
+    "Name": "Mel",
+    "Role": "Support",
+    "Pickrate": "3.5%"
+  },
+  {
+    "Position": "112",
+    "Name": "Riven",
+    "Role": "Top",
+    "Pickrate": "3.6%"
+  },
+  {
+    "Position": "113",
+    "Name": "Xerath",
+    "Role": "Support",
+    "Pickrate": "3.1%"
+  },
+  {
+    "Position": "114",
+    "Name": "Janna",
+    "Role": "Support",
+    "Pickrate": "3.4%"
+  },
+  {
+    "Position": "115",
+    "Name": "Brand",
+    "Role": "Support",
+    "Pickrate": "3.0%"
+  },
+  {
+    "Position": "116",
+    "Name": "Teemo",
+    "Role": "Top",
+    "Pickrate": "3.3%"
+  },
+  {
+    "Position": "117",
+    "Name": "Diana",
+    "Role": "Mid",
+    "Pickrate": "3.6%"
+  },
+  {
+    "Position": "118",
+    "Name": "Gangplank",
+    "Role": "Top",
+    "Pickrate": "3.5%"
+  },
+  {
+    "Position": "119",
+    "Name": "Nasus",
+    "Role": "Top",
+    "Pickrate": "3.2%"
+  },
+  {
+    "Position": "120",
+    "Name": "Lillia",
+    "Role": "Jungle",
+    "Pickrate": "3.2%"
+  },
+  {
+    "Position": "121",
+    "Name": "Kayle",
+    "Role": "Top",
+    "Pickrate": "3.3%"
+  },
+  {
+    "Position": "122",
+    "Name": "Aurora",
+    "Role": "Mid",
+    "Pickrate": "3.5%"
+  },
+  {
+    "Position": "123",
+    "Name": "Sona",
+    "Role": "Support",
+    "Pickrate": "2.8%"
+  },
+  {
+    "Position": "124",
+    "Name": "Pantheon",
+    "Role": "Support",
+    "Pickrate": "3.2%"
+  },
+  {
+    "Position": "125",
+    "Name": "Neeko",
+    "Role": "Support",
+    "Pickrate": "3.2%"
+  },
+  {
+    "Position": "126",
+    "Name": "Nidalee",
+    "Role": "Jungle",
+    "Pickrate": "3.3%"
+  },
+  {
+    "Position": "127",
+    "Name": "Rell",
+    "Role": "Support",
+    "Pickrate": "3.4%"
+  },
+  {
+    "Position": "128",
+    "Name": "Lissandra",
+    "Role": "Mid",
+    "Pickrate": "3.0%"
+  },
+  {
+    "Position": "129",
+    "Name": "Swain",
+    "Role": "Support",
+    "Pickrate": "2.7%"
+  },
+  {
+    "Position": "130",
+    "Name": "Yasuo",
+    "Role": "Top",
+    "Pickrate": "3.3%"
+  },
+  {
+    "Position": "131",
+    "Name": "Zoe",
+    "Role": "Mid",
+    "Pickrate": "3.4%"
+  },
+  {
+    "Position": "132",
+    "Name": "Talon",
+    "Role": "Jungle",
+    "Pickrate": "3.3%"
+  },
+  {
+    "Position": "133",
+    "Name": "Ekko",
+    "Role": "Mid",
+    "Pickrate": "3.1%"
+  },
+  {
+    "Position": "134",
+    "Name": "Tryndamere",
+    "Role": "Top",
+    "Pickrate": "2.9%"
+  },
+  {
+    "Position": "135",
+    "Name": "Camille",
+    "Role": "Top",
+    "Pickrate": "3.0%"
+  },
+  {
+    "Position": "136",
+    "Name": "Vex",
+    "Role": "Mid",
+    "Pickrate": "2.9%"
+  },
+  {
+    "Position": "137",
+    "Name": "Tahm Kench",
+    "Role": "Support",
+    "Pickrate": "2.6%"
+  },
+  {
+    "Position": "138",
+    "Name": "Ziggs",
+    "Role": "AD Carry",
+    "Pickrate": "2.8%"
+  },
+  {
+    "Position": "139",
+    "Name": "Urgot",
+    "Role": "Top",
+    "Pickrate": "2.6%"
+  },
+  {
+    "Position": "140",
+    "Name": "Hecarim",
+    "Role": "Jungle",
+    "Pickrate": "2.8%"
+  },
+  {
+    "Position": "141",
+    "Name": "Zac",
+    "Role": "Jungle",
+    "Pickrate": "2.8%"
+  },
+  {
+    "Position": "142",
+    "Name": "Kassadin",
+    "Role": "Mid",
+    "Pickrate": "2.7%"
+  },
+  {
+    "Position": "143",
+    "Name": "Naafiri",
+    "Role": "Jungle",
+    "Pickrate": "2.8%"
+  },
+  {
+    "Position": "144",
+    "Name": "Zilean",
+    "Role": "Support",
+    "Pickrate": "2.5%"
+  },
+  {
+    "Position": "145",
+    "Name": "Evelynn",
+    "Role": "Jungle",
+    "Pickrate": "2.5%"
+  },
+  {
+    "Position": "146",
+    "Name": "Nunu & Willump",
+    "Role": "Jungle",
+    "Pickrate": "2.4%"
+  },
+  {
+    "Position": "147",
+    "Name": "Vladimir",
+    "Role": "Top",
+    "Pickrate": "2.8%"
+  },
+  {
+    "Position": "148",
+    "Name": "Volibear",
+    "Role": "Top",
+    "Pickrate": "2.5%"
+  },
+  {
+    "Position": "149",
+    "Name": "Quinn",
+    "Role": "Top",
+    "Pickrate": "2.4%"
+  },
+  {
+    "Position": "150",
+    "Name": "Qiyana",
+    "Role": "Mid",
+    "Pickrate": "2.7%"
+  },
+  {
+    "Position": "151",
+    "Name": "Irelia",
+    "Role": "Mid",
+    "Pickrate": "2.6%"
+  },
+  {
+    "Position": "152",
+    "Name": "Kindred",
+    "Role": "Jungle",
+    "Pickrate": "2.7%"
+  },
+  {
+    "Position": "153",
+    "Name": "Taliyah",
+    "Role": "Mid",
+    "Pickrate": "2.5%"
+  },
+  {
+    "Position": "154",
+    "Name": "Illaoi",
+    "Role": "Top",
+    "Pickrate": "2.4%"
+  },
+  {
+    "Position": "155",
+    "Name": "Fiddlesticks",
+    "Role": "Jungle",
+    "Pickrate": "2.5%"
+  },
+  {
+    "Position": "156",
+    "Name": "Gragas",
+    "Role": "Top",
+    "Pickrate": "2.5%"
+  },
+  {
+    "Position": "157",
+    "Name": "Zeri",
+    "Role": "AD Carry",
+    "Pickrate": "2.3%"
+  },
+  {
+    "Position": "158",
+    "Name": "Trundle",
+    "Role": "Jungle",
+    "Pickrate": "2.2%"
+  },
+  {
+    "Position": "159",
+    "Name": "Sejuani",
+    "Role": "Jungle",
+    "Pickrate": "2.0%"
+  },
+  {
+    "Position": "160",
+    "Name": "Singed",
+    "Role": "Top",
+    "Pickrate": "2.3%"
+  },
+  {
+    "Position": "161",
+    "Name": "Anivia",
+    "Role": "Mid",
+    "Pickrate": "2.3%"
+  },
+  {
+    "Position": "162",
+    "Name": "Kog'Maw",
+    "Role": "AD Carry",
+    "Pickrate": "2.3%"
+  },
+  {
+    "Position": "163",
+    "Name": "Azir",
+    "Role": "Mid",
+    "Pickrate": "2.3%"
+  },
+  {
+    "Position": "164",
+    "Name": "Pantheon",
+    "Role": "Jungle",
+    "Pickrate": "2.4%"
+  },
+  {
+    "Position": "165",
+    "Name": "Poppy",
+    "Role": "Support",
+    "Pickrate": "2.3%"
+  },
+  {
+    "Position": "166",
+    "Name": "Udyr",
+    "Role": "Jungle",
+    "Pickrate": "2.0%"
+  },
+  {
+    "Position": "167",
+    "Name": "Elise",
+    "Role": "Jungle",
+    "Pickrate": "2.3%"
+  },
+  {
+    "Position": "168",
+    "Name": "Akshan",
+    "Role": "Mid",
+    "Pickrate": "2.3%"
+  },
+  {
+    "Position": "169",
+    "Name": "Pantheon",
+    "Role": "Top",
+    "Pickrate": "2.2%"
+  },
+  {
+    "Position": "170",
+    "Name": "Shaco",
+    "Role": "Support",
+    "Pickrate": "2.0%"
+  },
+  {
+    "Position": "171",
+    "Name": "Corki",
+    "Role": "AD Carry",
+    "Pickrate": "2.1%"
+  },
+  {
+    "Position": "172",
+    "Name": "Aurelion Sol",
+    "Role": "Mid",
+    "Pickrate": "1.9%"
+  },
+  {
+    "Position": "173",
+    "Name": "Kled",
+    "Role": "Top",
+    "Pickrate": "1.8%"
+  },
+  {
+    "Position": "174",
+    "Name": "Cassiopeia",
+    "Role": "Mid",
+    "Pickrate": "1.9%"
+  },
+  {
+    "Position": "175",
+    "Name": "Maokai",
+    "Role": "Support",
+    "Pickrate": "1.5%"
+  },
+  {
+    "Position": "176",
+    "Name": "Gwen",
+    "Role": "Top",
+    "Pickrate": "2.0%"
+  },
+  {
+    "Position": "177",
+    "Name": "Bel'Veth",
+    "Role": "Jungle",
+    "Pickrate": "2.0%"
+  },
+  {
+    "Position": "178",
+    "Name": "Annie",
+    "Role": "Mid",
+    "Pickrate": "1.7%"
+  },
+  {
+    "Position": "179",
+    "Name": "Warwick",
+    "Role": "Top",
+    "Pickrate": "1.7%"
+  },
+  {
+    "Position": "180",
+    "Name": "Nilah",
+    "Role": "AD Carry",
+    "Pickrate": "1.7%"
+  },
+  {
+    "Position": "181",
+    "Name": "Vel'Koz",
+    "Role": "Mid",
+    "Pickrate": "1.6%"
+  },
+  {
+    "Position": "182",
+    "Name": "Kennen",
+    "Role": "Top",
+    "Pickrate": "1.7%"
+  },
+  {
+    "Position": "183",
+    "Name": "Akali",
+    "Role": "Top",
+    "Pickrate": "1.8%"
+  },
+  {
+    "Position": "184",
+    "Name": "Renata Glasc",
+    "Role": "Support",
+    "Pickrate": "1.6%"
+  },
+  {
+    "Position": "185",
+    "Name": "Rumble",
+    "Role": "Top",
+    "Pickrate": "1.7%"
+  },
+  {
+    "Position": "186",
+    "Name": "Rammus",
+    "Role": "Jungle",
+    "Pickrate": "1.6%"
+  },
+  {
+    "Position": "187",
+    "Name": "Rek'Sai",
+    "Role": "Jungle",
+    "Pickrate": "1.7%"
+  },
+  {
+    "Position": "188",
+    "Name": "Senna",
+    "Role": "AD Carry",
+    "Pickrate": "1.6%"
+  },
+  {
+    "Position": "189",
+    "Name": "Olaf",
+    "Role": "Top",
+    "Pickrate": "1.7%"
+  },
+  {
+    "Position": "190",
+    "Name": "Shyvana",
+    "Role": "Jungle",
+    "Pickrate": "1.3%"
+  },
+  {
+    "Position": "191",
+    "Name": "Kayle",
+    "Role": "Mid",
+    "Pickrate": "1.4%"
+  },
+  {
+    "Position": "192",
+    "Name": "Karthus",
+    "Role": "Jungle",
+    "Pickrate": "1.5%"
+  },
+  {
+    "Position": "193",
+    "Name": "Naafiri",
+    "Role": "Mid",
+    "Pickrate": "1.4%"
+  },
+  {
+    "Position": "194",
+    "Name": "Taric",
+    "Role": "Support",
+    "Pickrate": "1.2%"
+  },
+  {
+    "Position": "195",
+    "Name": "Heimerdinger",
+    "Role": "Top",
+    "Pickrate": "1.2%"
+  },
+  {
+    "Position": "196",
+    "Name": "Talon",
+    "Role": "Mid",
+    "Pickrate": "1.4%"
+  },
+  {
+    "Position": "197",
+    "Name": "Poppy",
+    "Role": "Top",
+    "Pickrate": "1.3%"
+  },
+  {
+    "Position": "198",
+    "Name": "Ivern",
+    "Role": "Jungle",
+    "Pickrate": "1.2%"
+  },
+  {
+    "Position": "199",
+    "Name": "Ziggs",
+    "Role": "Mid",
+    "Pickrate": "1.0%"
+  },
+  {
+    "Position": "200",
+    "Name": "Kalista",
+    "Role": "AD Carry",
+    "Pickrate": "1.1%"
+  },
+  {
+    "Position": "201",
+    "Name": "Elise",
+    "Role": "Support",
+    "Pickrate": "1.2%"
+  },
+  {
+    "Position": "202",
+    "Name": "Tahm Kench",
+    "Role": "Top",
+    "Pickrate": "1.0%"
+  },
+  {
+    "Position": "203",
+    "Name": "Rek'Sai",
+    "Role": "Top",
+    "Pickrate": "1.0%"
+  },
+  {
+    "Position": "204",
+    "Name": "Trundle",
+    "Role": "Top",
+    "Pickrate": "0.8%"
+  },
+  {
+    "Position": "205",
+    "Name": "Gragas",
+    "Role": "Jungle",
+    "Pickrate": "0.9%"
+  },
+  {
+    "Position": "206",
+    "Name": "Aurora",
+    "Role": "Top",
+    "Pickrate": "1.0%"
+  },
+  {
+    "Position": "207",
+    "Name": "Fiddlesticks",
+    "Role": "Support",
+    "Pickrate": "0.8%"
+  },
+  {
+    "Position": "208",
+    "Name": "Cassiopeia",
+    "Role": "Top",
+    "Pickrate": "0.8%"
+  },
+  {
+    "Position": "209",
+    "Name": "Quinn",
+    "Role": "Mid",
+    "Pickrate": "0.7%"
+  },
+  {
+    "Position": "210",
+    "Name": "Skarner",
+    "Role": "Jungle",
+    "Pickrate": "0.7%"
+  },
+  {
+    "Position": "211",
+    "Name": "Kennen",
+    "Role": "Mid",
+    "Pickrate": "0.5%"
+  },
+  {
+    "Position": "212",
+    "Name": "Gwen",
+    "Role": "Jungle",
+    "Pickrate": "0.6%"
+  },
+  {
+    "Position": "213",
+    "Name": "Udyr",
+    "Role": "Top",
+    "Pickrate": "0.5%"
+  }
+]
