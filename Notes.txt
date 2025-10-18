@@ -4,11 +4,11 @@ Rethink filter order
 ----------------------------------
 
 2nd Page
-Reset Button?
+Reset Button? on R click
+Filter also on Builder
 Klick on icon of Champ
     -> Search bar pops up where you can replace them with specific champions
 
-Save between tabs
 
 
 ----------------------------------

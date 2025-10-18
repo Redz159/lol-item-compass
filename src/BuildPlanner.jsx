@@ -14,7 +14,51 @@ const boots = [
 const BLOODSONG_URL = "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3877.png";
 const SOLSTICE_URL = "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3876.png";
 
-function TeamBlock({ title, color, team, setTeam, forceLastBard = false }) {
+function TeamBlock({ title, color, team, setTeam, otherTeam, forceLastBard = false }) {
+
+    const [editingIndex, setEditingIndex] = useState(null);
+    const [searchQuery, setSearchQuery] = useState("");
+
+    const filteredChamps = champData.filter((c) =>
+        c.Name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
+    const handleChampionClick = (index) => {
+        setEditingIndex(index);
+        setSearchQuery("");
+    };
+
+    const handleChampionSelect = (champ) => {
+        const newTeam = [...team];
+        newTeam[editingIndex] = champ;
+        setTeam(newTeam);
+        setEditingIndex(null);
+        setSearchQuery("");
+    };
+
+// Searchbar schließen bei Klick außerhalb oder ESC
+    useEffect(() => {
+        const handleClickOutside = (e) => {
+            if (!e.target.closest(".champ-search-popup")) {
+                setEditingIndex(null);
+            }
+        };
+
+        const handleEsc = (e) => {
+            if (e.key === "Escape") setEditingIndex(null);
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+        document.addEventListener("keydown", handleEsc);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+            document.removeEventListener("keydown", handleEsc);
+        };
+    }, []);
+
+
+
     const dragonExceptions = {
         "Nunu & Willump": "Nunu",
         "Wukong": "MonkeyKing",
@@ -23,17 +67,18 @@ function TeamBlock({ title, color, team, setTeam, forceLastBard = false }) {
         "K'Sante": "KSante",
         "Kog'Maw": "KogMaw",
         "Rek'Sai": "RekSai",
-        "Renata Glasc": "Renata",
+        "Renata Glasc": "Renata"
     };
 
     const champImg = (name) => {
         if (!name) return "https://via.placeholder.com/64";
-        if (dragonExceptions[name])
+        if (dragonExceptions[name]) {
             return `https://ddragon.leagueoflegends.com/cdn/15.20.1/img/champion/${dragonExceptions[name]}.png`;
-
+        }
         let key = "";
         let capitalizeNext = true;
-        for (const ch of name) {
+        for (let i = 0; i < name.length; i++) {
+            const ch = name[i];
             if (ch === " ") capitalizeNext = true;
             else if (ch === "'") capitalizeNext = false;
             else {
@@ -44,44 +89,62 @@ function TeamBlock({ title, color, team, setTeam, forceLastBard = false }) {
         return `https://ddragon.leagueoflegends.com/cdn/15.20.1/img/champion/${key}.png`;
     };
 
-    const parsePickrate = (str) => parseFloat(str.replace("%", "")) || 0;
+    const { setTeam1, setTeam2 } = useBuild();
 
-    const pickChampionByRole = (role, used) => {
-        const pool = champData.filter(c => c.Role === role && !used.has(c.Name));
-        if (pool.length === 0) return { Name: "MissingNo", Role: role, Pickrate: "0%" };
+    const parsePickrate = (pickrateStr) => parseFloat((pickrateStr || "").replace("%", "")) || 0;
 
-        const total = pool.reduce((s, c) => s + parsePickrate(c.Pickrate), 0);
-        let rand = Math.random() * total;
+    const generateTeam = (roleOrder = ["Top", "Jungle", "Mid", "AD Carry", "Support"], usedSet = new Set(), forceBard = false) => {
+        const pickChampion = (role) => {
+            const pool = champData.filter(c => c.Role === role && !usedSet.has(c.Name));
+            if (pool.length === 0) return { Name: "MissingNo", Role: role, Pickrate: "0%" };
 
-        for (const champ of pool) {
-            rand -= parsePickrate(champ.Pickrate);
-            if (rand <= 0) {
-                used.add(champ.Name);
-                return champ;
+            const total = pool.reduce((sum, c) => sum + parsePickrate(c.Pickrate), 0);
+            let rand = Math.random() * total;
+
+            for (const champ of pool) {
+                rand -= parsePickrate(champ.Pickrate);
+                if (rand <= 0) {
+                    usedSet.add(champ.Name);
+                    return champ;
+                }
             }
-        }
+            const fallback = pool[Math.floor(Math.random() * pool.length)];
+            usedSet.add(fallback.Name);
+            return fallback;
+        };
 
-        const fallback = pool[Math.floor(Math.random() * pool.length)];
-        used.add(fallback.Name);
-        return fallback;
-    };
+        const team = roleOrder.map(role => pickChampion(role));
 
-    const randomizeTeam = () => {
-        const roles = ["Top", "Jungle", "Mid", "AD Carry", "Support"];
-        const used = new Set();
-        const newTeam = roles.map(r => pickChampionByRole(r, used));
-        if (forceLastBard) {
+        if (forceBard) {
             const bard = champData.find(c => c.Name === "Bard");
-            newTeam[4] = bard || { Name: "Bard", Role: "Support", Pickrate: "0%" };
+            team[4] = bard ? bard : { Name: "Bard", Role: "Support", Pickrate: "0%" };
+            usedSet.add("Bard");
         }
-        setTeam(newTeam);
+
+        return team;
     };
+
+    const handleRandomize = () => {
+        const used = new Set();
+
+        // alle Champions des anderen Teams blockieren
+        if (otherTeam) {
+            otherTeam.forEach(ch => ch?.Name && used.add(ch.Name));
+        }
+
+        const newTeam = generateTeam(["Top", "Jungle", "Mid", "AD Carry", "Support"], used, forceLastBard);
+
+        if (title.toLowerCase().includes("1")) setTeam1(newTeam);
+        else setTeam2(newTeam);
+    };
+
+    const displayTeam = (team && team.length > 0) ? team : Array(5).fill({ Name: null });
 
     return (
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
             <h3 style={{ color }}>{title}</h3>
             <button
-                onClick={randomizeTeam}
+                onClick={handleRandomize}
                 style={{
                     background: color,
                     border: "none",
@@ -96,25 +159,112 @@ function TeamBlock({ title, color, team, setTeam, forceLastBard = false }) {
             </button>
 
             <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-                {team.map((champ, idx) => (
-                    <img
+                {displayTeam.map((champ, idx) => (
+                    <div
                         key={idx}
-                        src={champImg(champ.Name)}
-                        alt={champ.Name || "Unknown"}
-                        title={`${champ.Name} (${champ.Role})`}
-                        style={{
-                            width: "70px",
-                            height: "70px",
-                            borderRadius: "10px",
-                            border: `3px solid ${color}`,
-                            background: "#1a1a1a",
-                        }}
-                    />
+                        onClick={() => handleChampionClick(idx)}
+                        style={{position: "relative", cursor: "pointer"}}
+                    >
+                        <img
+                            src={champImg(champ.Name)}
+                            alt={champ.Name || "Unknown"}
+                            title={`${champ.Name || "Unknown"} (${champ.Role || ""})`}
+                            style={{
+                                width: "80px",
+                                height: "80px",
+                                borderRadius: "10px",
+                                border: `3px solid ${color}`,
+                                background: "#1a1a1a",
+                            }}
+                        />
+
+                        {/* Suchfeld, wenn Champion bearbeitet wird */}
+                        {editingIndex === idx && (
+                            <div
+                                className="champ-search-popup"
+                                style={{
+                                    position: "absolute",
+                                    top: "90px",
+                                    left: "50%",
+                                    transform: "translateX(-50%)",
+                                    width: "200px", // breiter, damit Name + Icon reinpassen
+                                    background: "#1e1e1e",
+                                    border: "1px solid #444",
+                                    borderRadius: "10px",
+                                    padding: "8px",
+                                    zIndex: 100,
+                                    boxShadow: "0 2px 10px rgba(0,0,0,0.5)",
+                                }}
+                                onClick={(e) => e.stopPropagation()}
+                            >
+                                <input
+                                    type="text"
+                                    value={searchQuery}
+                                    onChange={(e) => setSearchQuery(e.target.value)}
+                                    placeholder="Search champion..."
+                                    autoFocus
+                                    style={{
+                                        width: "100%",
+                                        padding: "6px 8px",
+                                        borderRadius: "6px",
+                                        border: "1px solid #555",
+                                        background: "#111",
+                                        color: "#fff",
+                                        marginBottom: "6px",
+                                        boxSizing: "border-box",
+                                    }}
+                                />
+                                <div
+                                    style={{
+                                        maxHeight: "180px",
+                                        overflowY: "auto",
+                                        display: "flex",
+                                        flexDirection: "column",
+                                        gap: "4px",
+                                        scrollbarWidth: "thin",
+                                    }}
+                                >
+                                    {filteredChamps.slice(0, 10).map((champOption) => (
+                                        <div
+                                            key={champOption.Name}
+                                            onClick={() => handleChampionSelect(champOption)}
+                                            style={{
+                                                display: "flex",
+                                                alignItems: "center",
+                                                gap: "10px",
+                                                padding: "6px",
+                                                borderRadius: "6px",
+                                                background: "#2a2a2a",
+                                                cursor: "pointer",
+                                            }}
+                                        >
+                                            <img
+                                                src={champImg(champOption.Name)}
+                                                alt={champOption.Name}
+                                                style={{width: "32px", height: "32px", borderRadius: "4px"}}
+                                            />
+                                            <span style={{color: "#fff", fontSize: "14px", whiteSpace: "nowrap"}}>
+                            {champOption.Name}
+                        </span>
+                                        </div>
+                                    ))}
+                                    {filteredChamps.length === 0 && (
+                                        <div style={{color: "#aaa", textAlign: "center", padding: "6px"}}>
+                                            No results
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        )}
+                    </div>
+
+
                 ))}
             </div>
         </div>
     );
 }
+
 
 export default function BuildPlanner() {
     const [mode, setMode] = useState("add");
@@ -140,9 +290,10 @@ export default function BuildPlanner() {
         if (team1.length === 0 && team2.length === 0) {
             const used = new Set();
             const parsePickrate = (str) => parseFloat(str.replace("%", "")) || 0;
+
             const pickChampion = (role) => {
                 const pool = champData.filter(c => c.Role === role && !used.has(c.Name));
-                if (pool.length === 0) return { Name: "MissingNo", Role: role, Pickrate: "0%" };
+                if (pool.length === 0) return {Name: "MissingNo", Role: role, Pickrate: "0%"};
                 const total = pool.reduce((s, c) => s + parsePickrate(c.Pickrate), 0);
                 let rand = Math.random() * total;
                 for (const champ of pool) {
@@ -156,14 +307,22 @@ export default function BuildPlanner() {
                 used.add(fallback.Name);
                 return fallback;
             };
+
             const roles = ["Top", "Jungle", "Mid", "AD Carry", "Support"];
+
+            // Beide Teams mit gemeinsamem Pool generieren
             const t1 = roles.map(r => pickChampion(r));
             const t2 = roles.map(r => pickChampion(r));
-            t1[4] = champData.find(c => c.Name === "Bard") || { Name: "Bard", Role: "Support", Pickrate: "0%" };
+
+            // Bard fix auf Support von Team 1 setzen (falls vorhanden)
+            t1[4] = champData.find(c => c.Name === "Bard") || {Name: "Bard", Role: "Support", Pickrate: "0%"};
+            used.add("Bard");
+
             setTeam1(t1);
             setTeam2(t2);
         }
     }, [team1, team2, setTeam1, setTeam2]);
+
 
     // Dein kompletter Item-, Boot- und Build-Roster-Teil bleibt unverändert ↓
 
@@ -187,9 +346,9 @@ export default function BuildPlanner() {
         setBuildRoster(prev => {
             const newRoster = [...prev];
             if (newRoster[0].name === "Bloodsong") {
-                newRoster[0] = { name: "Solstice Sleigh", img: SOLSTICE_URL, fixed: true };
+                newRoster[0] = {name: "Solstice Sleigh", img: SOLSTICE_URL, fixed: true};
             } else {
-                newRoster[0] = { name: "Bloodsong", img: BLOODSONG_URL, fixed: true };
+                newRoster[0] = {name: "Bloodsong", img: BLOODSONG_URL, fixed: true};
             }
             return newRoster;
         });
@@ -490,8 +649,8 @@ export default function BuildPlanner() {
 
             {/* Rechte Seite – Teams nebeneinander */}
             <div style={{display: "flex", flexDirection: "row", gap: "40px", alignItems: "flex-start"}}>
-                <TeamBlock title="Team 1" color="limegreen" team={team1} setTeam={setTeam1} forceLastBard={true}/>
-                <TeamBlock title="Team 2" color="crimson" team={team2} setTeam={setTeam2}/>
+                <TeamBlock title="Team 1" color="limegreen" team={team1} setTeam={setTeam1} otherTeam={team2} forceLastBard={true} />
+                <TeamBlock title="Team 2" color="crimson" team={team2} setTeam={setTeam2} otherTeam={team1} />
             </div>
 
 
