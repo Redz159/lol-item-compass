@@ -1,40 +1,119 @@
 import React, { useState, useEffect } from "react";
 import { items } from "./items";
 import IonianBootsImg from "../images/FoS Lucidity Boots.png";
+import champData from "./assets/champs.json";
 
 
 const boots = [
     { name: "Boots of Speed", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3009.png" },
     { name: "Mercury's Treads", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3111.png" },
     { name: "Plated Steelcaps", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3047.png" },
-    { name: "Ionian Boots of Lucidity", img: IonianBootsImg },
+    { name: "Ionian Boots of Lucidity", img: "https://ddragon.leagueoflegends.com/cdn/15.20.1/img/champion/MissFortune.png" },
 ];
+
+
+// Fallback: entfernt nur Leerzeichen und Apostrophen
+
+
 
 const BLOODSONG_URL = "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3877.png";
 const SOLSTICE_URL = "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3876.png";
 
-const champions = [
-    { name: "Aatrox", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/champion/Aatrox.png" },
-    { name: "Ahri", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/champion/Ahri.png" },
-    { name: "Ashe", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/champion/Ashe.png" },
-    { name: "Darius", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/champion/Darius.png" },
-    { name: "Garen", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/champion/Garen.png" },
-    { name: "Lux", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/champion/Lux.png" },
-    { name: "Yasuo", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/champion/Yasuo.png" },
-    { name: "Bard", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/champion/Bard.png" },
-];
+const usedChamps = new Set();
+function TeamBlock({ title, color, roleOrder = ["Top","Jungle","Mid","AD Carry","Support"], forceLastBard = false }) {
 
-function TeamBlock({ title, color, forceLastBard }) {
-    const [team, setTeam] = useState([
-        champions[0], champions[1], champions[2], champions[3],
-        forceLastBard ? champions.find(c => c.name === "Bard") : champions[4],
-    ]);
+    //List of exceptions that dont follow rules
+    const dragonExceptions = {
+        "Nunu & Willump": "Nunu",
+        "Wukong" : "MonkeyKing",
+        "Dr. Mundo" : "DrMundo",
+        "Jarvan IV" : "JarvanIV",
+        "K'Sante" : "KSante"
+    };
+
+    const champImg = (name) => {
+        if (!name) return "https://via.placeholder.com/64";
+
+        if (dragonExceptions[name]) {
+            return `https://ddragon.leagueoflegends.com/cdn/15.20.1/img/champion/${dragonExceptions[name]}.png`;
+        }
+
+        // to differentiate between " " and '
+        let key = "";
+        let capitalizeNext = true;
+
+        for (let i = 0; i < name.length; i++) {
+            const ch = name[i];
+
+            if (ch === " ") {
+                // If whitespace → next letter big
+                capitalizeNext = true;
+            } else if (ch === "'") {
+                // If ' → next letter isnt capitalized
+                capitalizeNext = false;
+            } else {
+                if (capitalizeNext) {
+                    key += ch.toUpperCase();
+                    capitalizeNext = false;
+                } else {
+                    key += ch.toLowerCase();
+                }
+            }
+        }
+
+        return `https://ddragon.leagueoflegends.com/cdn/15.20.1/img/champion/${key}.png`;
+    };
+
+
+
+
+
+    // Pickrate Randomizer
+    const parsePickrate = (pickrateStr) => parseFloat(pickrateStr.replace("%", "")) || 0;
+
+    const pickChampionByRole = (role) => {
+        // Filter: right role and not used yet
+        const pool = champData.filter(c => c.Role === role && !usedChamps.has(c.Name));
+        if (pool.length === 0) return { Name: "MissingNo", Role: role, Pickrate: "0%" };
+
+        const total = pool.reduce((sum, c) => sum + parsePickrate(c.Pickrate), 0);
+        let rand = Math.random() * total;
+
+        for (const champ of pool) {
+            rand -= parsePickrate(champ.Pickrate);
+            if (rand <= 0) {
+                usedChamps.add(champ.Name);
+                return champ;
+            }
+        }
+
+        // Fallback
+        const randomChamp = pool[Math.floor(Math.random() * pool.length)];
+        usedChamps.add(randomChamp.Name);
+        return randomChamp;
+    };
+
+    const [team, setTeam] = React.useState(() => {
+        const t = roleOrder.map(role => pickChampionByRole(role));
+        if (forceLastBard) {
+            const bard = champData.find(c => c.Name === "Bard");
+            t[4] = bard ? bard : { Name: "Bard", Role: "Support", Pickrate: "0%" };
+            usedChamps.add("Bard");
+        }
+        return t;
+    });
 
     const randomizeTeam = () => {
-        const pool = champions.filter(c => !forceLastBard || c.name !== "Bard");
-        const shuffled = [...pool].sort(() => 0.5 - Math.random()).slice(0, 5);
-        if (forceLastBard) shuffled[4] = champions.find(c => c.name === "Bard");
-        setTeam(shuffled);
+        // wichtig: erst alte Champs aus usedChamps entfernen
+        team.forEach(champ => usedChamps.delete(champ.Name));
+
+        const newTeam = roleOrder.map(role => pickChampionByRole(role));
+        if (forceLastBard) {
+            const bard = champData.find(c => c.Name === "Bard");
+            newTeam[4] = bard ? bard : { Name: "Bard", Role: "Support", Pickrate: "0%" };
+            usedChamps.add("Bard");
+        }
+        setTeam(newTeam);
     };
 
     return (
@@ -52,15 +131,16 @@ function TeamBlock({ title, color, forceLastBard }) {
                     marginBottom: "8px",
                 }}
             >
-                🎲
+                🎲 Randomize
             </button>
 
             <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
                 {team.map((champ, idx) => (
                     <img
                         key={idx}
-                        src={champ.img}
-                        alt={champ.name}
+                        src={champImg(champ.Name)}
+                        alt={champ.Name || "Unknown"}
+                        title={`${champ.Name} (${champ.Role})`}
                         style={{
                             width: "64px",
                             height: "64px",
@@ -84,7 +164,7 @@ export default function BuildPlanner() {
         { name: "Bloodsong", img: BLOODSONG_URL, fixed: true },
         { name: "Dead Man's Plate", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3742.png", fixed: true },
         null,
-        null,
+        null, //
         null,
         null,
     ]);
@@ -422,10 +502,12 @@ export default function BuildPlanner() {
             </div>
 
             {/* Rechte Seite – Teams nebeneinander */}
-            <div style={{ display: "flex", flexDirection: "row", gap: "40px", alignItems: "flex-start" }}>
-                <TeamBlock title="Team 1" color="limegreen" forceLastBard={true} size={112} />
-                <TeamBlock title="Team 2" color="crimson" forceLastBard={false} size={112} />
+            <div style={{display: "flex", flexDirection: "row", gap: "40px", alignItems: "flex-start"}}>
+                <TeamBlock title="Team 1" color="limegreen" forceLastBard={true}/>
+                <TeamBlock title="Team 2" color="crimson" forceLastBard={false}/>
             </div>
+
+
         </div>
     );
 

@@ -1,9 +1,11 @@
-Reset Button
+Update descriptions?
+Rethink filter order
 
 ----------------------------------
 
 2nd Page
 Reset Button?
-Teams randomized
+Klick on icon of Champ
+    -> Search bar pops up where you can replace them with specific champions
 
 Save between tabs
