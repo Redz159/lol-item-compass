@@ -9,3 +9,10 @@ Klick on icon of Champ
     -> Search bar pops up where you can replace them with specific champions
 
 Save between tabs
+
+
+----------------------------------
+
+General
+
+Update Comments

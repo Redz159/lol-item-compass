@@ -8,11 +8,8 @@ const boots = [
     { name: "Boots of Speed", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3009.png" },
     { name: "Mercury's Treads", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3111.png" },
     { name: "Plated Steelcaps", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3047.png" },
-    { name: "Ionian Boots of Lucidity", img: "https://ddragon.leagueoflegends.com/cdn/15.20.1/img/champion/MissFortune.png" },
+    { name: "Ionian Boots of Lucidity", img: IonianBootsImg },
 ];
-
-
-// Fallback: entfernt nur Leerzeichen und Apostrophen
 
 
 
@@ -28,7 +25,10 @@ function TeamBlock({ title, color, roleOrder = ["Top","Jungle","Mid","AD Carry",
         "Wukong" : "MonkeyKing",
         "Dr. Mundo" : "DrMundo",
         "Jarvan IV" : "JarvanIV",
-        "K'Sante" : "KSante"
+        "K'Sante" : "KSante",
+        "Kog'Maw" : "KogMaw",
+        "Rek'Sai" : "RekSai",
+
     };
 
     const champImg = (name) => {
@@ -104,7 +104,6 @@ function TeamBlock({ title, color, roleOrder = ["Top","Jungle","Mid","AD Carry",
     });
 
     const randomizeTeam = () => {
-        // wichtig: erst alte Champs aus usedChamps entfernen
         team.forEach(champ => usedChamps.delete(champ.Name));
 
         const newTeam = roleOrder.map(role => pickChampionByRole(role));
@@ -207,7 +206,6 @@ export default function BuildPlanner() {
         });
     };
 
-    // Hinzufügen ins Build Roster
     const handleAddToRoster = (item) => {
         if (item.name === "Bloodsong" || item.name === "Solstice Sleigh") {
             handleToggleBloodsong();
