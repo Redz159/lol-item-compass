@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { useBuild } from "./BuildContext";
 import { items } from "./items";
 import IonianBootsImg from "../images/FoS Lucidity Boots.png";
 import champData from "./assets/champs.json";
-
 
 const boots = [
     { name: "Boots of Speed", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3009.png" },
@@ -11,106 +11,68 @@ const boots = [
     { name: "Ionian Boots of Lucidity", img: IonianBootsImg },
 ];
 
-
-
 const BLOODSONG_URL = "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3877.png";
 const SOLSTICE_URL = "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3876.png";
 
-const usedChamps = new Set();
-function TeamBlock({ title, color, roleOrder = ["Top","Jungle","Mid","AD Carry","Support"], forceLastBard = false }) {
-
-    //List of exceptions that dont follow rules
+function TeamBlock({ title, color, team, setTeam, forceLastBard = false }) {
     const dragonExceptions = {
         "Nunu & Willump": "Nunu",
-        "Wukong" : "MonkeyKing",
-        "Dr. Mundo" : "DrMundo",
-        "Jarvan IV" : "JarvanIV",
-        "K'Sante" : "KSante",
-        "Kog'Maw" : "KogMaw",
-        "Rek'Sai" : "RekSai",
-
+        "Wukong": "MonkeyKing",
+        "Dr. Mundo": "DrMundo",
+        "Jarvan IV": "JarvanIV",
+        "K'Sante": "KSante",
+        "Kog'Maw": "KogMaw",
+        "Rek'Sai": "RekSai",
+        "Renata Glasc": "Renata",
     };
 
     const champImg = (name) => {
         if (!name) return "https://via.placeholder.com/64";
-
-        if (dragonExceptions[name]) {
+        if (dragonExceptions[name])
             return `https://ddragon.leagueoflegends.com/cdn/15.20.1/img/champion/${dragonExceptions[name]}.png`;
-        }
 
-        // to differentiate between " " and '
         let key = "";
         let capitalizeNext = true;
-
-        for (let i = 0; i < name.length; i++) {
-            const ch = name[i];
-
-            if (ch === " ") {
-                // If whitespace → next letter big
-                capitalizeNext = true;
-            } else if (ch === "'") {
-                // If ' → next letter isnt capitalized
+        for (const ch of name) {
+            if (ch === " ") capitalizeNext = true;
+            else if (ch === "'") capitalizeNext = false;
+            else {
+                key += capitalizeNext ? ch.toUpperCase() : ch.toLowerCase();
                 capitalizeNext = false;
-            } else {
-                if (capitalizeNext) {
-                    key += ch.toUpperCase();
-                    capitalizeNext = false;
-                } else {
-                    key += ch.toLowerCase();
-                }
             }
         }
-
         return `https://ddragon.leagueoflegends.com/cdn/15.20.1/img/champion/${key}.png`;
     };
 
+    const parsePickrate = (str) => parseFloat(str.replace("%", "")) || 0;
 
-
-
-
-    // Pickrate Randomizer
-    const parsePickrate = (pickrateStr) => parseFloat(pickrateStr.replace("%", "")) || 0;
-
-    const pickChampionByRole = (role) => {
-        // Filter: right role and not used yet
-        const pool = champData.filter(c => c.Role === role && !usedChamps.has(c.Name));
+    const pickChampionByRole = (role, used) => {
+        const pool = champData.filter(c => c.Role === role && !used.has(c.Name));
         if (pool.length === 0) return { Name: "MissingNo", Role: role, Pickrate: "0%" };
 
-        const total = pool.reduce((sum, c) => sum + parsePickrate(c.Pickrate), 0);
+        const total = pool.reduce((s, c) => s + parsePickrate(c.Pickrate), 0);
         let rand = Math.random() * total;
 
         for (const champ of pool) {
             rand -= parsePickrate(champ.Pickrate);
             if (rand <= 0) {
-                usedChamps.add(champ.Name);
+                used.add(champ.Name);
                 return champ;
             }
         }
 
-        // Fallback
-        const randomChamp = pool[Math.floor(Math.random() * pool.length)];
-        usedChamps.add(randomChamp.Name);
-        return randomChamp;
+        const fallback = pool[Math.floor(Math.random() * pool.length)];
+        used.add(fallback.Name);
+        return fallback;
     };
 
-    const [team, setTeam] = React.useState(() => {
-        const t = roleOrder.map(role => pickChampionByRole(role));
-        if (forceLastBard) {
-            const bard = champData.find(c => c.Name === "Bard");
-            t[4] = bard ? bard : { Name: "Bard", Role: "Support", Pickrate: "0%" };
-            usedChamps.add("Bard");
-        }
-        return t;
-    });
-
     const randomizeTeam = () => {
-        team.forEach(champ => usedChamps.delete(champ.Name));
-
-        const newTeam = roleOrder.map(role => pickChampionByRole(role));
+        const roles = ["Top", "Jungle", "Mid", "AD Carry", "Support"];
+        const used = new Set();
+        const newTeam = roles.map(r => pickChampionByRole(r, used));
         if (forceLastBard) {
             const bard = champData.find(c => c.Name === "Bard");
-            newTeam[4] = bard ? bard : { Name: "Bard", Role: "Support", Pickrate: "0%" };
-            usedChamps.add("Bard");
+            newTeam[4] = bard || { Name: "Bard", Role: "Support", Pickrate: "0%" };
         }
         setTeam(newTeam);
     };
@@ -141,8 +103,8 @@ function TeamBlock({ title, color, roleOrder = ["Top","Jungle","Mid","AD Carry",
                         alt={champ.Name || "Unknown"}
                         title={`${champ.Name} (${champ.Role})`}
                         style={{
-                            width: "64px",
-                            height: "64px",
+                            width: "70px",
+                            height: "70px",
                             borderRadius: "10px",
                             border: `3px solid ${color}`,
                             background: "#1a1a1a",
@@ -154,20 +116,16 @@ function TeamBlock({ title, color, roleOrder = ["Top","Jungle","Mid","AD Carry",
     );
 }
 
-
 export default function BuildPlanner() {
-    const [mode, setMode] = useState("add"); // 'add' oder 'exclude'
-    const [viableItems, setViableItems] = useState([]);
-    const [excludedItems, setExcludedItems] = useState([]);
-    const [buildRoster, setBuildRoster] = useState([
-        { name: "Bloodsong", img: BLOODSONG_URL, fixed: true },
-        { name: "Dead Man's Plate", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3742.png", fixed: true },
-        null,
-        null, //
-        null,
-        null,
-    ]);
-    const [selectedBoot, setSelectedBoot] = useState(null);
+    const [mode, setMode] = useState("add");
+    const {
+        viableItems, setViableItems,
+        excludedItems, setExcludedItems,
+        buildRoster, setBuildRoster,
+        selectedBoot, setSelectedBoot,
+        team1, setTeam1,
+        team2, setTeam2,
+    } = useBuild();
 
     useEffect(() => {
         const handleKey = (e) => {
@@ -177,6 +135,37 @@ export default function BuildPlanner() {
         window.addEventListener("keydown", handleKey);
         return () => window.removeEventListener("keydown", handleKey);
     }, []);
+
+    useEffect(() => {
+        if (team1.length === 0 && team2.length === 0) {
+            const used = new Set();
+            const parsePickrate = (str) => parseFloat(str.replace("%", "")) || 0;
+            const pickChampion = (role) => {
+                const pool = champData.filter(c => c.Role === role && !used.has(c.Name));
+                if (pool.length === 0) return { Name: "MissingNo", Role: role, Pickrate: "0%" };
+                const total = pool.reduce((s, c) => s + parsePickrate(c.Pickrate), 0);
+                let rand = Math.random() * total;
+                for (const champ of pool) {
+                    rand -= parsePickrate(champ.Pickrate);
+                    if (rand <= 0) {
+                        used.add(champ.Name);
+                        return champ;
+                    }
+                }
+                const fallback = pool[Math.floor(Math.random() * pool.length)];
+                used.add(fallback.Name);
+                return fallback;
+            };
+            const roles = ["Top", "Jungle", "Mid", "AD Carry", "Support"];
+            const t1 = roles.map(r => pickChampion(r));
+            const t2 = roles.map(r => pickChampion(r));
+            t1[4] = champData.find(c => c.Name === "Bard") || { Name: "Bard", Role: "Support", Pickrate: "0%" };
+            setTeam1(t1);
+            setTeam2(t2);
+        }
+    }, [team1, team2, setTeam1, setTeam2]);
+
+    // Dein kompletter Item-, Boot- und Build-Roster-Teil bleibt unverändert ↓
 
     const handleItemClick = (item) => {
         if (mode === "add") {
@@ -276,28 +265,28 @@ export default function BuildPlanner() {
     );
 
     return (
-        <div style={{ display: "flex", flexDirection: "row", gap: "80px", margin: "20px" }}>
+        <div style={{display: "flex", flexDirection: "row", gap: "80px", margin: "20px"}}>
 
             {/* Linke Seite: kompletter Inhalt */}
-            <div style={{ margin: "0px auto 0 18px", width: "500px" }}>
+            <div style={{margin: "0px auto 0 18px", width: "500px"}}>
 
-                <div style={{ marginBottom: "8px" }}>
+                <div style={{marginBottom: "8px"}}>
                     <strong>Mode:</strong> {mode === "add" ? "Add" : "Exclude"} (Press 1/2)
                 </div>
 
                 {/* Item Grid */}
-                <div style={{ marginTop: "8px" }}>
+                <div style={{marginTop: "8px"}}>
                     {[
-                        { label: "Self + Def", color1: "#b06cff", color2: "#5bff8a", filter: i => i.x < 0 && i.y < 0 },
-                        { label: "Team + Def", color1: "#6fc7ff", color2: "#5bff8a", filter: i => i.x < 0 && i.y >= 0 },
-                        { label: "Self + Dmg", color1: "#b06cff", color2: "#ff6666", filter: i => i.x >= 0 && i.y < 0 },
-                        { label: "Team + Dmg", color1: "#6fc7ff", color2: "#ff6666", filter: i => i.x >= 0 && i.y >= 0 },
+                        {label: "Self + Def", color1: "#b06cff", color2: "#5bff8a", filter: i => i.x < 0 && i.y < 0},
+                        {label: "Team + Def", color1: "#6fc7ff", color2: "#5bff8a", filter: i => i.x < 0 && i.y >= 0},
+                        {label: "Self + Dmg", color1: "#b06cff", color2: "#ff6666", filter: i => i.x >= 0 && i.y < 0},
+                        {label: "Team + Dmg", color1: "#6fc7ff", color2: "#ff6666", filter: i => i.x >= 0 && i.y >= 0},
                     ].map((quad) => {
                         const itemsToShow = filteredItems.filter(quad.filter);
                         if (itemsToShow.length === 0) return null;
 
                         return (
-                            <div key={quad.label} style={{ marginBottom: "10px" }}>
+                            <div key={quad.label} style={{marginBottom: "10px"}}>
                                 <h3
                                     style={{
                                         fontSize: "16px",
@@ -406,9 +395,9 @@ export default function BuildPlanner() {
                 </div>
 
                 {/* Boots */}
-                <div style={{ marginTop: "1px" }}>
+                <div style={{marginTop: "1px"}}>
                     <h3>Boots:</h3>
-                    <div style={{ display: "flex", gap: "10px" }}>
+                    <div style={{display: "flex", gap: "10px"}}>
                         {boots.map((boot) => (
                             <img
                                 key={boot.name}
@@ -428,9 +417,9 @@ export default function BuildPlanner() {
                 </div>
 
                 {/* Viable Items */}
-                <div style={{ marginTop: "0px" }}>
+                <div style={{marginTop: "0px"}}>
                     <h3>Viable Items:</h3>
-                    <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
+                    <div style={{display: "flex", flexWrap: "wrap", gap: "10px"}}>
                         {viableItems.map((name) => {
                             const item = items.find((i) => i.name === name);
                             return (
@@ -455,9 +444,9 @@ export default function BuildPlanner() {
                 </div>
 
                 {/* Build Roster */}
-                <div style={{ marginTop: "0px", marginBottom: "300px" }}>
+                <div style={{marginTop: "0px", marginBottom: "300px"}}>
                     <h3>Build Roster:</h3>
-                    <div style={{ display: "flex", gap: "10px" }}>
+                    <div style={{display: "flex", gap: "10px"}}>
                         {buildRoster.map((slot, idx) => (
                             <div
                                 key={idx}
@@ -501,8 +490,8 @@ export default function BuildPlanner() {
 
             {/* Rechte Seite – Teams nebeneinander */}
             <div style={{display: "flex", flexDirection: "row", gap: "40px", alignItems: "flex-start"}}>
-                <TeamBlock title="Team 1" color="limegreen" forceLastBard={true}/>
-                <TeamBlock title="Team 2" color="crimson" forceLastBard={false}/>
+                <TeamBlock title="Team 1" color="limegreen" team={team1} setTeam={setTeam1} forceLastBard={true}/>
+                <TeamBlock title="Team 2" color="crimson" team={team2} setTeam={setTeam2}/>
             </div>
 
 

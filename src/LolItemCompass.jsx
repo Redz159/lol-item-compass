@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { useBuild } from "./BuildContext";
 import{items} from "./items";
 
 export default function LoLItemCompass() {
 
   const [activeItem, setActiveItem] = useState(null);
-  const [filtersEnabled, setFiltersEnabled] = useState(true);
-  const [selectedFilters, setSelectedFilters] = useState([]);
+
+  const { filtersEnabled, setFiltersEnabled, selectedFilters, setSelectedFilters, items } = useBuild();
+
 
   //Click outside to close tooltip
   useEffect(() => {
