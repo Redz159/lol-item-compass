@@ -13,7 +13,7 @@ export const items = [
         x: 170,
         y: -230,
         desc: "Late game - Long Fights",
-        categories: ["Long Fights", "Mixed Dmg"],
+        categories: ["Long Fights", "Mixed Dmg", "Enemy team tanky"],
     },
     {
         name: "Riftmaker",
@@ -21,7 +21,7 @@ export const items = [
         x: 240,
         y: -220,
         desc: "More damage - Long Fights",
-        categories: ["Long Fights"],
+        categories: ["Long Fights", "Enemy team tanky"],
     },
     {
         name: "Liandry's Torment",
@@ -165,7 +165,7 @@ export const items = [
         x: 300,
         y: 150,
         desc: "Team 2+ AP Carries",
-        categories: ["Own team 2+ AP Carries"],
+        categories: ["Own team 2+ AP Carries", "Enemy team tanky"],
     },
     {
         name: "Serpent's Fang",

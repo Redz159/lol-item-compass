@@ -281,10 +281,31 @@ export default function BuildPlanner() {
         const handleKey = (e) => {
             if (e.key === "1") setMode("add");
             if (e.key === "2") setMode("exclude");
+            if (e.key.toLowerCase() === "r") handleReset();
         };
         window.addEventListener("keydown", handleKey);
         return () => window.removeEventListener("keydown", handleKey);
     }, []);
+
+
+    const handleReset = () => {
+        // Setze alles auf Anfang
+        setViableItems([]);
+        setExcludedItems([]);
+        setSelectedBoot(null);
+
+        // Setze Build Roster mit Default-Regeln
+        const defaultRoster = [
+            { name: "Bloodsong", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3877.png", fixed: true },
+            { name: "Dead Man's Plate", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3742.png", fixed: true },
+            null,
+            null,
+            null,
+            null,
+        ];
+        setBuildRoster(defaultRoster);
+    };
+
 
     useEffect(() => {
         if (team1.length === 0 && team2.length === 0) {
@@ -432,6 +453,22 @@ export default function BuildPlanner() {
                 <div style={{marginBottom: "8px"}}>
                     <strong>Mode:</strong> {mode === "add" ? "Add" : "Exclude"} (Press 1/2)
                 </div>
+
+                <button
+                    onClick={handleReset}
+                    style={{
+                        background: "linear-gradient(90deg, #444, #666)",
+                        border: "none",
+                        borderRadius: "8px",
+                        padding: "6px 12px",
+                        color: "white",
+                        cursor: "pointer",
+                        marginBottom: "12px",
+                    }}
+                >
+                    🔄 Reset (R)
+                </button>
+
 
                 {/* Item Grid */}
                 <div style={{marginTop: "8px"}}>
@@ -649,7 +686,8 @@ export default function BuildPlanner() {
 
             {/* Rechte Seite – Teams nebeneinander */}
             <div style={{display: "flex", flexDirection: "row", gap: "40px", alignItems: "flex-start"}}>
-                <TeamBlock title="Team 1" color="limegreen" team={team1} setTeam={setTeam1} otherTeam={team2} forceLastBard={true} />
+                <TeamBlock title="Team 1" color="limegreen" team={team1} setTeam={setTeam1} otherTeam={team2}
+                           forceLastBard={true}/>
                 <TeamBlock title="Team 2" color="crimson" team={team2} setTeam={setTeam2} otherTeam={team1} />
             </div>
 
