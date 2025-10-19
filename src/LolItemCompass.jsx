@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useBuild } from "./BuildContext";
-import{items} from "./items";
 
 export default function LoLItemCompass() {
 
@@ -15,6 +14,14 @@ export default function LoLItemCompass() {
     window.addEventListener("click", handleClickOutside);
     return () => window.removeEventListener("click", handleClickOutside);
   }, []);
+
+    useEffect(() => {
+        const handleKey = (e) => {
+            if (e.key.toLowerCase() === "r") resetFilters();
+        };
+        window.addEventListener("keydown", handleKey);
+        return () => window.removeEventListener("keydown", handleKey);
+    }, []);
 
   // Different Items
 
@@ -294,7 +301,7 @@ export default function LoLItemCompass() {
                             cursor: "pointer",
                         }}
                     >
-                        Reset
+                        Reset (R)
                     </button>
                 </div>
 
