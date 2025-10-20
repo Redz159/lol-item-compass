@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useBuild } from "./BuildContext";
-import { items } from "./items";
+import { items } from "./assets/items.js";
 import IonianBootsImg from "../images/FoS Lucidity Boots.png";
 import champData from "./assets/champs.json";
 

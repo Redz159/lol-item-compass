@@ -29,27 +29,30 @@ export default function LoLItemCompass() {
     //Different Categories "General" for shared categories, "Specific" for more niche ones
     const filterGroups = {
         General: [
-            "Enemy team tanky",
             "Heavy AD",
             "Heavy AP",
             "Mixed Dmg",
-            "Own team 2+ AP Carries",
-            "Heavy Front line",
+            "Enemy team tanky",
+            "Heavy Frontline",
             "Long Fights",
+            "Own team 2+ AP Carries",
+            "Team lacks tankiness",
+            "Need Dmg"
         ],
         Specific: [
-            "Ahead",
-            "Behind",
-            "Enemy Poke",
-            "Much CC",
             "Much Single target CC",
+            "Much CC",
             "Many shields",
-            "Much AOE",
+            "Resets (Jinx, Viego...)",
             "2+ Autoattackers",
             "2+ Crits",
-            "Lack Waveclear",
-            "Resets (Jinx, Viego...)",
+            "Enemy Poke",
+            "Much AOE",
+            "Team lacks Waveclear",
             "1 Carry in Team",
+            "Team lacks Engage",
+            "Ahead",
+            "Behind"
         ],
     };
 
@@ -306,9 +309,9 @@ export default function LoLItemCompass() {
                 </div>
 
                 {/* Toggle */}
-                <div style={{ marginTop: "10px", marginBottom: "10px" }}>
-                    <label style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                        <span>An/Aus</span>
+                <div style={{ marginTop: "1px", marginBottom: "5px" }}>
+                    <label style={{ display: "flex", alignItems: "center", gap: "0px" }}>
+                        <span>On/Off</span>
                         <input
                             type="checkbox"
                             checked={filtersEnabled}

@@ -1,10 +1,25 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import ItemCompass from "./LolItemCompass";
 import BuildPlanner from "./BuildPlanner";
 import { BuildProvider } from "./BuildContext";
 
 export default function App() {
     const [activeTab, setActiveTab] = useState("compass");
+
+    const tabSwitch = () => {
+        setActiveTab((prev) => (prev === "compass" ? "planner" : "compass"));
+    };
+
+    useEffect(() => {
+        const handleKey = (e) => {
+            if (e.key.toLowerCase() === "q") {
+                tabSwitch();
+            }
+        };
+        window.addEventListener("keydown", handleKey);
+        return () => window.removeEventListener("keydown", handleKey);
+    }, []);
+
 
     return (
         <BuildProvider>
@@ -17,7 +32,7 @@ export default function App() {
                             activeTab === "compass" ? "bg-blue-600 text-white" : "bg-gray-700 hover:bg-gray-600"
                         }`}
                     >
-                        Item Compass
+                        Item Compass (Q)
                     </button>
 
                     <button
@@ -26,7 +41,7 @@ export default function App() {
                             activeTab === "planner" ? "bg-blue-600 text-white" : "bg-gray-700 hover:bg-gray-600"
                         }`}
                     >
-                        Build Planner
+                        Build Planner (Q)
                     </button>
                 </div>
 

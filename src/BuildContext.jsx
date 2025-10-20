@@ -1,6 +1,6 @@
 // BuildContext.jsx
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { items } from "./items";
+import { items } from "./assets/items.js";
 import champData from "./assets/champs.json";
 
 const BuildContext = createContext();

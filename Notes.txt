@@ -12,5 +12,11 @@ Update Searchbar? (Kinda shit atm)
 ----------------------------------
 
 General
-Hotkey to switch between Tabs (Q?)
 Update Comments
+Make Category own js to import into BuildPlanner
+
+
+-------------
+
+Rune Pages?
+Sample Builds
