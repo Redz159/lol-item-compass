@@ -37,7 +37,9 @@ export default function LoLItemCompass() {
             "Long Fights",
             "Own team 2+ AP Carries",
             "Team lacks tankiness",
-            "Need Dmg"
+            "Need Dmg",
+            "Ahead",
+            "Behind"
         ],
         Specific: [
             "Much Single target CC",
@@ -50,9 +52,7 @@ export default function LoLItemCompass() {
             "Much AOE",
             "Team lacks Waveclear",
             "1 Carry in Team",
-            "Team lacks Engage",
-            "Ahead",
-            "Behind"
+            "Team lacks Engage"
         ],
     };
 

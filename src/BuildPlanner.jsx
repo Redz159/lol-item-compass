@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import { useBuild } from "./BuildContext";
 import { items } from "./assets/items.js";
 import IonianBootsImg from "../images/FoS Lucidity Boots.png";
@@ -15,30 +15,21 @@ const BLOODSONG_URL = "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/
 const SOLSTICE_URL = "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3876.png";
 
 function TeamBlock({ title, color, team, setTeam, otherTeam, forceLastBard = false }) {
+
     const [editingIndex, setEditingIndex] = useState(null);
     const [searchQuery, setSearchQuery] = useState("");
-    const popupRef = useRef(null);
-    const inputRef = useRef(null);
 
-    const filteredChamps = useMemo(() => {
-        if (!searchQuery) return [];
-        return champData
-            .filter((c) => c.Name.toLowerCase().includes(searchQuery.toLowerCase()))
-            .sort((a, b) => a.Name.localeCompare(b.Name));
-    }, [searchQuery]);
+    const filteredChamps = champData.filter((c) =>
+        c.Name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
 
-
-    const handleChampionClick = (index, e) => {
-        e.stopPropagation();
+    const handleChampionClick = (index) => {
         setEditingIndex(index);
         setSearchQuery("");
-        // Fokus später setzen (nach render)
-        setTimeout(() => inputRef.current?.focus(), 0);
     };
 
     const handleChampionSelect = (champ) => {
-        if (editingIndex == null) return;
-        const newTeam = [...(team || [])];
+        const newTeam = [...team];
         newTeam[editingIndex] = champ;
         setTeam(newTeam);
         setEditingIndex(null);
@@ -47,26 +38,24 @@ function TeamBlock({ title, color, team, setTeam, otherTeam, forceLastBard = fal
 
 // Searchbar schließen bei Klick außerhalb oder ESC
     useEffect(() => {
-        const onDocMouseDown = (e) => {
-            if (!popupRef.current) return;
-            if (editingIndex != null && !popupRef.current.contains(e.target)) {
+        const handleClickOutside = (e) => {
+            if (!e.target.closest(".champ-search-popup")) {
                 setEditingIndex(null);
-                setSearchQuery("");
             }
         };
-        const onDocKey = (e) => {
-            if (e.key === "Escape") {
-                setEditingIndex(null);
-                setSearchQuery("");
-            }
+
+        const handleEsc = (e) => {
+            if (e.key === "Escape") setEditingIndex(null);
         };
-        document.addEventListener("mousedown", onDocMouseDown);
-        document.addEventListener("keydown", onDocKey);
+
+        document.addEventListener("mousedown", handleClickOutside);
+        document.addEventListener("keydown", handleEsc);
+
         return () => {
-            document.removeEventListener("mousedown", onDocMouseDown);
-            document.removeEventListener("keydown", onDocKey);
+            document.removeEventListener("mousedown", handleClickOutside);
+            document.removeEventListener("keydown", handleEsc);
         };
-    }, [editingIndex]);
+    }, []);
 
 
 
@@ -87,19 +76,18 @@ function TeamBlock({ title, color, team, setTeam, otherTeam, forceLastBard = fal
             return `https://ddragon.leagueoflegends.com/cdn/15.20.1/img/champion/${dragonExceptions[name]}.png`;
         }
         let key = "";
-        let cap = true;
+        let capitalizeNext = true;
         for (let i = 0; i < name.length; i++) {
             const ch = name[i];
-            if (ch === " ") cap = true;
-            else if (ch === "'") cap = false;
+            if (ch === " ") capitalizeNext = true;
+            else if (ch === "'") capitalizeNext = false;
             else {
-                key += cap ? ch.toUpperCase() : ch.toLowerCase();
-                cap = false;
+                key += capitalizeNext ? ch.toUpperCase() : ch.toLowerCase();
+                capitalizeNext = false;
             }
         }
         return `https://ddragon.leagueoflegends.com/cdn/15.20.1/img/champion/${key}.png`;
     };
-
 
     const { setTeam1, setTeam2 } = useBuild();
 
@@ -151,6 +139,7 @@ function TeamBlock({ title, color, team, setTeam, otherTeam, forceLastBard = fal
     };
 
     const displayTeam = (team && team.length > 0) ? team : Array(5).fill({ Name: null });
+
     return (
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
             <h3 style={{ color }}>{title}</h3>

@@ -31,3 +31,6 @@ npm run build
 
 # deployed auf Seite
 npm run deploy
+
+# Wieder zurück auf Feature
+git checkout Feature
