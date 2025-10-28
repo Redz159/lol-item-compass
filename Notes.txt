@@ -1,22 +1,24 @@
-Update descriptions?
-Rethink filter order
+
 
 ----------------------------------
-
 2nd Page
+
 Filter also on Builder
 Update Searchbar? (Kinda shit atm)
+Searchbar "Enter" to take highest Champ
+Disable Hotkeys while searching
 
 
 
 ----------------------------------
-
 General
+
 Update Comments
-Make Category own js to import into BuildPlanner
+Make Categories own js to import into BuildPlanner
 
 
 -------------
+3rd Page
 
 Rune Pages?
 Sample Builds

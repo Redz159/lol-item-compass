@@ -5,7 +5,7 @@ export const items = [
         x: 60,
         y: -200,
         desc: "Against high AP and CC",
-        categories: ["Heavy AP", "Much CC"]
+        categories: ["Heavy AP", "Much CC", "Ahead"]
     },
     {
         name: "Terminus",
@@ -13,7 +13,7 @@ export const items = [
         x: 170,
         y: -230,
         desc: "Late game - Long Fights - Always pair with Jak'Sho first",
-        categories: ["Long Fights", "Mixed Dmg", "Enemy team tanky", "Need Dmg"],
+        categories: ["Long Fights", "Mixed Dmg", "Enemy team tanky", "Need Dmg", "Ahead"],
     },
     {
         name: "Riftmaker",
@@ -21,7 +21,7 @@ export const items = [
         x: 240,
         y: -220,
         desc: "Need flat more damage - Long Fights - Great pair to HP/AP Items",
-        categories: ["Long Fights", "Enemy team tanky", "Need Dmg"],
+        categories: ["Long Fights", "Enemy team tanky", "Need Dmg", "Behind"],
     },
     {
         name: "Liandry's Torment",
@@ -29,7 +29,7 @@ export const items = [
         x: 290,
         y: -160,
         desc: "HP Stackers - Meele Frontline",
-        categories: ["Heavy Frontline", "Enemy team tanky", "Need Dmg"],
+        categories: ["Heavy Frontline", "Enemy team tanky", "Need Dmg", "Behind"],
     },
     {
         name: "Experimental Hexplate",
@@ -45,7 +45,7 @@ export const items = [
         x: 410,
         y: -240,
         desc: "Lack Waveclear - Teamfights",
-        categories: ["Team lacks Waveclear", "Heavy Frontline", "Need Dmg"],
+        categories: ["Team lacks Waveclear", "Heavy Frontline", "Need Dmg", "Behind"],
     },
     {
         name: "Zhonya's Hourglass",
@@ -53,7 +53,7 @@ export const items = [
         x: 120,
         y: -170,
         desc: "Enemy Dive Comp - Enemy has Resets - Yi/Olaf ult...",
-        categories: ["Heavy AD", "Resets (Jinx, Viego...)"],
+        categories: ["Heavy AD", "Resets (Jinx, Viego...)", "Ahead"],
     },
     {
         name: "Cosmic Drive",
@@ -61,7 +61,7 @@ export const items = [
         x: 380,
         y: -120,
         desc: "Need more Ults for e.g. Catch Comps or u lack engage - Fast enemies, eg. Sivir, Vayne",
-        categories: ["Team lacks Waveclear", "Fast enemies"],
+        categories: ["Team lacks Waveclear", "Fast enemies", "Behind"],
     },
     {
         name: "Dead Man's Plate",
@@ -76,8 +76,8 @@ export const items = [
         img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/4401.png",
         x: -320,
         y: -210,
-        desc: "Need MR - Long Fights",
-        categories: ["Heavy AP", "Long Fights", "Team lacks tankiness"],
+        desc: "Need MR - Fast Enemies - Long Fights",
+        categories: ["Heavy AP", "Long Fights", "Team lacks tankiness", "Ahead"],
     },
     {
         name: "Randuin's Omen",
@@ -85,7 +85,7 @@ export const items = [
         x: -380,
         y: -150,
         desc: "Against 2+ Critters - Need Armor",
-        categories: ["2+ Crits", "Heavy AD", "Team lacks tankiness"],
+        categories: ["2+ Crits", "Heavy AD", "Team lacks tankiness", "Ahead"],
     },
     {
         name: "Kaenic Rookern",
@@ -93,7 +93,7 @@ export const items = [
         x: -390,
         y: -220,
         desc: "Need MR - Enemy Poke",
-        categories: ["Heavy AP", "Enemy Poke", "Team lacks tankiness"],
+        categories: ["Heavy AP", "Enemy Poke", "Team lacks tankiness", "Ahead"],
     },
     {
         name: "Jak'Sho, The Protean",
@@ -101,7 +101,7 @@ export const items = [
         x: -450,
         y: -240,
         desc: "Mixed Dmg - You need to frontline",
-        categories: ["Mixed Dmg", "Long Fights", "Team lacks tankiness"],
+        categories: ["Mixed Dmg", "Long Fights", "Team lacks tankiness", "Ahead"],
     },
     {
         name: "Redemption",
@@ -109,7 +109,7 @@ export const items = [
         x: -240,
         y: 245,
         desc: "In place Fight (e.g. J4) - Tip: Can time with ult",
-        categories: ["Much AOE", "Heavy Frontline"],
+        categories: ["Much AOE", "Heavy Frontline", "Ahead"],
     },
     {
         name: "Mikael's Blessing",
@@ -117,7 +117,7 @@ export const items = [
         x: -170,
         y: 250,
         desc: "Single Target CC (e.g. Ashe, Varus...)",
-        categories: ["Much Single target CC"],
+        categories: ["Much Single target CC", "Ahead"],
     },
     {
         name: "Knight's Vow",
@@ -125,7 +125,7 @@ export const items = [
         x: -310,
         y: 230,
         desc: "Single Carry in Team",
-        categories: ["1 Carry in Team"],
+        categories: ["1 Carry in Team", "Ahead"],
     },
     {
         name: "Locket of the Iron Solari",
@@ -133,7 +133,7 @@ export const items = [
         x: -380,
         y: 250,
         desc: "Instant AOE Dmg - Pairs well with Redemption",
-        categories: ["Much AOE", "Team lacks tankiness"],
+        categories: ["Much AOE", "Team lacks tankiness", "Ahead"],
     },
     {
         name: "Frozen Heart",
@@ -141,7 +141,7 @@ export const items = [
         x: -450,
         y: 180,
         desc: "2+ Autoattacker's - Need Armor",
-        categories: ["2+ Autoattackers", "Heavy AD", "Team lacks tankiness"],
+        categories: ["2+ Autoattackers", "Heavy AD", "Team lacks tankiness", "Ahead"],
     },
     {
         name: "Abyssal Mask",
@@ -149,7 +149,7 @@ export const items = [
         x: 50,
         y: 80,
         desc: "Team has 2+ AP - Need MR",
-        categories: ["Own team 2+ AP Carries", "Heavy AP"],
+        categories: ["Own team 2+ AP Carries", "Heavy AP", "Ahead"],
     },
     {
         name: "Imperial Mandate",
@@ -157,7 +157,7 @@ export const items = [
         x: 380,
         y: 150,
         desc: "Behind - Need Dmg Amp",
-        categories: ["Behind", "Need Dmg"],
+        categories: ["Behind", "Need Dmg", "Behind"],
     },
     {
         name: "Bloodletter's Curse",
@@ -165,7 +165,7 @@ export const items = [
         x: 300,
         y: 150,
         desc: "Team 2+ AP Carries",
-        categories: ["Own team 2+ AP Carries", "Enemy team tanky", "Need Dmg"],
+        categories: ["Own team 2+ AP Carries", "Enemy team tanky", "Need Dmg", "Behind"],
     },
     {
         name: "Serpent's Fang",
