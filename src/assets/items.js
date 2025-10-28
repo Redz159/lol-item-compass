@@ -61,7 +61,7 @@ export const items = [
         x: 380,
         y: -120,
         desc: "Need more Ults for e.g. Catch Comps or u lack engage - Fast enemies, eg. Sivir, Vayne",
-        categories: ["Team lacks Waveclear", "Fast enemies", "Behind"],
+        categories: ["Team lacks Engage", "Fast enemies", "Behind"],
     },
     {
         name: "Dead Man's Plate",
