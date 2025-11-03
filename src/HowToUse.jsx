@@ -34,7 +34,7 @@ export default function HowToUse() {
                 style={{
                     color: "#4da6ff",
                     fontSize: "22px",
-                    marginBottom: "8px",
+                    marginBottom: "0px",
                     marginTop: "20px",
                 }}
             >
@@ -53,7 +53,7 @@ export default function HowToUse() {
                 style={{
                     color: "#c97fff",
                     fontSize: "22px",
-                    marginBottom: "8px",
+                    marginBottom: "0px",
                     marginTop: "20px",
                 }}
             >
@@ -63,7 +63,7 @@ export default function HowToUse() {
                 <li>
                     Press <span style={{ color: "#ffcc00", fontWeight: "bold"  }}>"1"</span> to go into{" "}
                     <span style={{ color: "#80ff80", fontWeight: "bold"  }}>adding mode</span>, where you can click on items to add
-                    them to viable items.
+                    them to "viable items".
                 </li>
                 <li>
                     Press <span style={{ color: "#ffcc00", fontWeight: "bold"  }}>"2"</span> to go into {" "}
@@ -86,16 +86,16 @@ export default function HowToUse() {
                 style={{
                     color: "#80ff80",
                     fontSize: "22px",
-                    marginBottom: "8px",
+                    marginBottom: "0px",
                     marginTop: "20px",
                 }}
             >
                 What to use it for:
             </h2>
-            <ul style={{ marginLeft: "24px", marginBottom: "16px" }}>
+            <ul style={{ marginLeft: "24px", marginBottom: "0px" }}>
                 <li>In champ select or loading screen, quickly scout and prepare an ideal item build.</li>
                 <li>Practice building with the randomizer.</li>
-                <li>After game review — did you build right?</li>
+                <li>After game review: did you build right?</li>
             </ul>
 
             {/* Known bugs */}
@@ -103,7 +103,7 @@ export default function HowToUse() {
                 style={{
                     color: "#ff6666",
                     fontSize: "22px",
-                    marginBottom: "8px",
+                    marginBottom: "0px",
                     marginTop: "20px",
                 }}
             >
@@ -113,10 +113,12 @@ export default function HowToUse() {
                 <li>Search bar is a bit buggy but works fine for now.</li>
                 <li>
                     While searching for champs, pressing{" "}
-                    <span style={{ color: "#ffcc00", fontWeight: "bold" }}>"Q"</span> or{" "}
-                    <span style={{ color: "#ffcc00", fontWeight: "bold" }}>"R"</span> might still trigger hotkeys
-                    (especially annoying with Qiyana or Quinn, but who likes them anyway tbh 😀).
+                    <span style={{color: "#ffcc00", fontWeight: "bold"}}>"Q"</span> or{" "}
+                    <span style={{color: "#ffcc00", fontWeight: "bold"}}>"R"</span> might still trigger hotkeys
+                    (especially annoying with <span style={{color: "#ffcc00", fontWeight: "bold"}}>"Q"</span>, but who likes Qiyana or
+                    Quinn anyways tbh 😀).
                 </li>
+                <li> If you find more please dm me on dc at @redz159</li>
             </ul>
         </div>
     );
