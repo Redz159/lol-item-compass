@@ -77,7 +77,7 @@ export const items = [
         x: -320,
         y: -210,
         desc: "Need MR - Fast Enemies - Long Fights",
-        categories: ["Heavy AP", "Long Fights", "Team lacks tankiness", "Ahead"],
+        categories: ["Heavy AP", "Long Fights", "Team lacks tankiness", "Ahead", "Fast enemies"],
     },
     {
         name: "Randuin's Omen",
