@@ -1,8 +1,11 @@
+
 import React, { useState, useEffect } from "react";
+import { starter, bootsStats, legendary } from "./assets/itemStats.jsx";
 import { useBuild } from "./BuildContext";
 import { items } from "./assets/items.js";
 import IonianBootsImg from "../images/FoS Lucidity Boots.png";
 import champData from "./assets/champs.json";
+
 
 const boots = [
     { name: "Boots of Speed", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3009.png" },
@@ -276,6 +279,7 @@ export default function BuildPlanner() {
         team1, setTeam1,
         team2, setTeam2,
     } = useBuild();
+    const joatValue = calculateJoaT(buildRoster, selectedBoot);
 
     useEffect(() => {
         const handleKey = (e) => {
@@ -306,6 +310,54 @@ export default function BuildPlanner() {
         setBuildRoster(defaultRoster);
     };
 
+
+    function calculateJoaT(buildRoster, selectedBoot) {
+        if (!buildRoster) return 0;
+
+        const statSet = new Set();
+
+        // Starter Slot 1 immer vorhanden
+        const starterItem = starter[0];
+        starterItem[1].forEach(s => statSet.add(s));
+
+        // Boots
+        if (selectedBoot) {
+            const bootItem = bootsStats.find(b => b[0] === selectedBoot);
+            if (bootItem) {
+                bootItem[1].forEach(s => statSet.add(s));
+            }
+        }
+
+        // Legendary items aus buildRoster
+        buildRoster.forEach(item => {
+            if (!item || !item.name) return;  // <-- WICHTIGER FIX
+
+            const leg = legendary.find(l => l[0] === item.name);
+            if (leg) {
+                leg[1].forEach(s => statSet.add(s));
+            }
+        });
+
+        return statSet.size;
+    }
+    function getJoatStyle(value) {
+        const max = 10;
+        const clamped = Math.min(value, max);
+
+        const ratio = clamped / max; // 0 → rot, 1 → grün
+
+        // Farbverlauf Rot → Grün
+        const r = Math.round(255 * (1 - ratio));
+        const g = Math.round(255 * ratio);
+        const b = 0;
+
+        return {
+            color: `rgb(${r}, ${g}, ${b})`,
+            fontWeight: "bold",                  // immer fett
+            textDecoration: value >= 10 ? "underline" : "none",
+            transition: "color 0.3s ease, text-decoration 0.3s ease",
+        };
+    }
 
     useEffect(() => {
         if (team1.length === 0 && team2.length === 0) {
@@ -641,7 +693,16 @@ export default function BuildPlanner() {
 
                 {/* Build Roster */}
                 <div style={{marginTop: "0px", marginBottom: "300px"}}>
-                    <h3>Build Roster:</h3>
+                    <h3 style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center"
+                    }}>
+                        <span>Build Roster</span>
+                        <div style={getJoatStyle(joatValue)}>
+                            JoAT: {joatValue}
+                        </div>
+                    </h3>
                     <div style={{display: "flex", gap: "10px"}}>
                         {buildRoster.map((slot, idx) => (
                             <div
