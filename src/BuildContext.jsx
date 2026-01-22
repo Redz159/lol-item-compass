@@ -54,7 +54,7 @@ export const BuildProvider = ({ children }) => {
     const [excludedItems, setExcludedItems] = useState([]);
     const [buildRoster, setBuildRoster] = useState([
         { name: "Bloodsong", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3877.png", fixed: true },
-        { name: "Dead Man's Plate", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3742.png", fixed: true },
+        null,
         null,
         null,
         null,
