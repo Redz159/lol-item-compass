@@ -1,3 +1,8 @@
+import Bandlepipes from "../../images/Bandlepipes.png";
+import Diadem from "../../images/Diadem.png";
+import Protoplasm from "../../images/Protoplasm.png";
+
+
 export const items = [
     {
         name: "Wits End",
@@ -82,10 +87,18 @@ export const items = [
     {
         name: "Randuin's Omen",
         img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3143.png",
-        x: -380,
-        y: -150,
+        x: -300,
+        y: -140,
         desc: "Against 2+ Critters - Need Armor",
         categories: ["2+ Crits", "Heavy AD", "Team lacks tankiness", "Ahead"],
+    },
+    {
+        name: "Protoplasm Harness",
+        img: Protoplasm,
+        x: -380,
+        y: -150,
+        desc: "Best with resitances already bought",
+        categories: ["Team lacks tankiness"],
     },
     {
         name: "Kaenic Rookern",
@@ -103,27 +116,51 @@ export const items = [
         desc: "Mixed Dmg - You need to frontline",
         categories: ["Mixed Dmg", "Long Fights", "Team lacks tankiness", "Ahead"],
     },
-    {
+    /*{
         name: "Redemption",
         img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3107.png",
         x: -240,
         y: 245,
         desc: "In place Fight (e.g. J4) - Tip: Can time with ult",
         categories: ["Much AOE", "Heavy Frontline", "Ahead"],
-    },
+    },*/
     {
         name: "Mikael's Blessing",
         img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3222.png",
-        x: -170,
-        y: 250,
+        x: -300,
+        y: 230,
         desc: "Single Target CC (e.g. Ashe, Varus...)",
         categories: ["Much Single target CC", "Ahead"],
+    },
+    {
+        name: "Bandlepipes",
+        img: Bandlepipes,
+        x: -150,
+        y: 80,
+        desc: "Generally really good",
+        categories: [""],
+    },
+    {
+        name: "Diadem of Songs",
+        img: Diadem,
+        x: -160,
+        y: 240,
+        desc: "Great into enemy Enchanters ALWAYS WITH ECHOES",
+        categories: [""],
+    },
+    {
+        name: "Echoes of Helia",
+        img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/6620.png",
+        x: -230,
+        y: 250,
+        desc: "Great into enemy Enchanters ALWAYS WITH DIADEM",
+        categories: [""],
     },
     {
         name: "Knight's Vow",
         img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3109.png",
         x: -310,
-        y: 230,
+        y: 120,
         desc: "Single Carry in Team",
         categories: ["1 Carry in Team", "Ahead"],
     },
@@ -131,7 +168,7 @@ export const items = [
         name: "Locket of the Iron Solari",
         img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3190.png",
         x: -380,
-        y: 250,
+        y: 190,
         desc: "Instant AOE Dmg - Pairs well with Redemption",
         categories: ["Much AOE", "Team lacks tankiness", "Ahead"],
     },
@@ -139,7 +176,7 @@ export const items = [
         name: "Frozen Heart",
         img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3110.png",
         x: -450,
-        y: 180,
+        y: 110,
         desc: "2+ Autoattacker's - Need Armor",
         categories: ["2+ Autoattackers", "Heavy AD", "Team lacks tankiness", "Ahead"],
     },

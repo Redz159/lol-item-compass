@@ -56,9 +56,8 @@ export default function LoLItemCompass() {
         ],
     };
 
-    // -----------------------------
-    // 🔧 Filter-Handler
-    // -----------------------------
+    //  Filter-Handler
+
     const handleFilterChange = (filter) => {
         setSelectedFilters((prev) =>
             prev.includes(filter)
@@ -79,9 +78,9 @@ export default function LoLItemCompass() {
             );
 
 
-    // -----------------------------
-    // 🔲 Rendering
-    // -----------------------------
+
+    // Rendering
+
     const handleItemClick = (e, item) => {
         e.stopPropagation();
         setActiveItem(activeItem === item.name ? null : item.name);
@@ -99,9 +98,7 @@ export default function LoLItemCompass() {
                 gap: "20px",
             }}
         >
-            {/* ==================== */}
-            {/* 🧭 KOMPASS */}
-            {/* ==================== */}
+            {/* KOMPASS */}
             <div
                 style={{
                     position: "relative",
@@ -277,9 +274,7 @@ export default function LoLItemCompass() {
 
             </div>
 
-            {/* ==================== */}
-            {/* 🧩 FILTER PANEL */}
-            {/* ==================== */}
+            {/* FILTER PANEL */}
             <div
                 style={{
                     width: "320px",

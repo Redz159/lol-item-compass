@@ -3,15 +3,16 @@ import React, { useState, useEffect } from "react";
 import { starter, bootsStats, legendary } from "./assets/itemStats.jsx";
 import { useBuild } from "./BuildContext";
 import { items } from "./assets/items.js";
-import IonianBootsImg from "../images/FoS Lucidity Boots.png";
 import champData from "./assets/champs.json";
+import Diadem from "../images/Diadem.png";
+import Bandlepipes from "../images/Bandlepipes.png";
 
 
 const boots = [
     { name: "Boots of Speed", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3009.png" },
     { name: "Mercury's Treads", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3111.png" },
     { name: "Plated Steelcaps", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3047.png" },
-    { name: "Ionian Boots of Lucidity", img: IonianBootsImg },
+    { name: "Ionian Boots of Lucidity", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3158.png" },
 ];
 
 const BLOODSONG_URL = "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3877.png";
@@ -293,15 +294,15 @@ export default function BuildPlanner() {
 
 
     const handleReset = () => {
-        // Setze alles auf Anfang
+        // Reset everything
         setViableItems([]);
         setExcludedItems([]);
         setSelectedBoot(null);
 
-        // Setze Build Roster mit Default-Regeln
+        // Set build Roster to default
         const defaultRoster = [
             { name: "Bloodsong", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3877.png", fixed: true },
-            { name: "Dead Man's Plate", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3742.png", fixed: true },
+            null,
             null,
             null,
             null,
@@ -309,6 +310,39 @@ export default function BuildPlanner() {
         ];
         setBuildRoster(defaultRoster);
     };
+    const handleEnchanter = () => {
+        //setViableItems([]);
+        //setExcludedItems([]);
+        setSelectedBoot("Boots of Speed");
+
+        // Setze Build Roster mit Default-Regeln
+        const enchanterDefaultRoster = [
+            { name: "Bloodsong", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3877.png", fixed: true },
+            { name: "Echoes of Helia", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/6620.png", fixed: true },
+            { name: "Boots of Speed", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3009.png", fixed: true },
+            { name: "Diadem of Songs", img: Diadem, fixed: true },
+            null,
+            null,
+        ];
+        setBuildRoster(enchanterDefaultRoster);
+    };
+    const handleDefault = () => {
+        //setViableItems([]);
+        //setExcludedItems([]);
+        setSelectedBoot(null);
+
+        // Setze Build Roster mit Default-Regeln
+        const tankDefaultRoster = [
+            { name: "Bloodsong", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3877.png", fixed: true },
+            { name: "Dead Man's Plate", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3742.png", fixed: true },
+            { name: "Bandlepipes", img: Bandlepipes, fixed: true },
+            null,
+            null,
+            null,
+        ];
+        setBuildRoster(tankDefaultRoster);
+    };
+
 
 
     function calculateJoaT(buildRoster, selectedBoot) {
@@ -330,7 +364,7 @@ export default function BuildPlanner() {
 
         // Legendary items aus buildRoster
         buildRoster.forEach(item => {
-            if (!item || !item.name) return;  // <-- WICHTIGER FIX
+            if (!item || !item.name) return;
 
             const leg = legendary.find(l => l[0] === item.name);
             if (leg) {
@@ -519,6 +553,38 @@ export default function BuildPlanner() {
                     }}
                 >
                     🔄 Reset (R)
+                </button>
+
+                <button
+                    onClick={handleEnchanter}
+                    style={{
+                        background: "linear-gradient(90deg, #46ACFD, #52F2A4)",
+                        border: "none",
+                        borderRadius: "8px",
+                        padding: "6px 12px",
+                        color: "black",
+                        cursor: "pointer",
+                        marginBottom: "12px",
+                        marginLeft: "8px",
+                    }}
+                >
+                    ❤️‍🩹 Enchanter
+                </button>
+
+                <button
+                    onClick={handleDefault}
+                    style={{
+                        background: "linear-gradient(90deg, #915934, #EFF75A)",
+                        border: "none",
+                        borderRadius: "8px",
+                        padding: "6px 12px",
+                        color: "black",
+                        cursor: "pointer",
+                        marginBottom: "12px",
+                        marginLeft: "8px",
+                    }}
+                >
+                    📯Default
                 </button>
 
 
@@ -749,7 +815,7 @@ export default function BuildPlanner() {
             <div style={{display: "flex", flexDirection: "row", gap: "40px", alignItems: "flex-start"}}>
                 <TeamBlock title="Team 1" color="limegreen" team={team1} setTeam={setTeam1} otherTeam={team2}
                            forceLastBard={true}/>
-                <TeamBlock title="Team 2" color="crimson" team={team2} setTeam={setTeam2} otherTeam={team1} />
+                <TeamBlock title="Team 2" color="crimson" team={team2} setTeam={setTeam2} otherTeam={team1}/>
             </div>
 
 
