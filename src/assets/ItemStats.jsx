@@ -58,6 +58,7 @@ const legendary = [
     ["triforce", [0, 1, 8, 2]],
     ["Bloodletter's Curse", [3, 4, 8]],
     ["rabadon", [3]],
+    ["Dusk and Dawn", [0, 3, 1, 2]],
 ];
 
 export { starter, bootsStats, legendary };

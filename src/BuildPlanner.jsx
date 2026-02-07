@@ -326,6 +326,22 @@ export default function BuildPlanner() {
         ];
         setBuildRoster(enchanterDefaultRoster);
     };
+    const handleBruiser = () => {
+        //setViableItems([]);
+        //setExcludedItems([]);
+        setSelectedBoot("Boots of Speed");
+
+        // Set Bruiser Build
+        const enchanterDefaultRoster = [
+            { name: "Celestial Opposition", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3869.png", fixed: true },
+            { name: "Dusk and Dawn", img: "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/2510.png", fixed: true },
+            null,
+            null,
+            null,
+            null,
+        ];
+        setBuildRoster(enchanterDefaultRoster);
+    };
     const handleDefault = () => {
         //setViableItems([]);
         //setExcludedItems([]);
@@ -556,6 +572,22 @@ export default function BuildPlanner() {
                 </button>
 
                 <button
+                    onClick={handleDefault}
+                    style={{
+                        background: "linear-gradient(90deg, #915934, #EFF75A)",
+                        border: "none",
+                        borderRadius: "8px",
+                        padding: "6px 12px",
+                        color: "black",
+                        cursor: "pointer",
+                        marginBottom: "12px",
+                        marginLeft: "8px",
+                    }}
+                >
+                    📯Default
+                </button>
+
+                <button
                     onClick={handleEnchanter}
                     style={{
                         background: "linear-gradient(90deg, #46ACFD, #52F2A4)",
@@ -572,9 +604,9 @@ export default function BuildPlanner() {
                 </button>
 
                 <button
-                    onClick={handleDefault}
+                    onClick={handleBruiser}
                     style={{
-                        background: "linear-gradient(90deg, #915934, #EFF75A)",
+                        background: "linear-gradient(90deg, #5259D8, #D2BE9F)",
                         border: "none",
                         borderRadius: "8px",
                         padding: "6px 12px",
@@ -584,9 +616,8 @@ export default function BuildPlanner() {
                         marginLeft: "8px",
                     }}
                 >
-                    📯Default
+                    ⚔️ Bruiser
                 </button>
-
 
                 {/* Item Grid */}
                 <div style={{marginTop: "8px"}}>
