@@ -329,10 +329,10 @@ export default function BuildPlanner() {
     const handleBruiser = () => {
         //setViableItems([]);
         //setExcludedItems([]);
-        setSelectedBoot("Boots of Speed");
+        setSelectedBoot(null);
 
         // Set Bruiser Build
-        const enchanterDefaultRoster = [
+        const bruiserDefaultRoster = [
             { name: "Celestial Opposition", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3869.png", fixed: true },
             { name: "Dusk and Dawn", img: "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/2510.png", fixed: true },
             null,
@@ -340,7 +340,7 @@ export default function BuildPlanner() {
             null,
             null,
         ];
-        setBuildRoster(enchanterDefaultRoster);
+        setBuildRoster(bruiserDefaultRoster);
     };
     const handleDefault = () => {
         //setViableItems([]);
