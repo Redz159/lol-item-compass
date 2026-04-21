@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 import { starter, bootsStats, legendary } from "./assets/itemStats.jsx";
+import runesData from "./assets/runesReforged.json";
 import { useBuild } from "./BuildContext";
 import { items } from "./assets/items.js";
 import champData from "./assets/champs.json";
@@ -74,6 +75,10 @@ function TeamBlock({ title, color, team, setTeam, otherTeam, forceLastBard = fal
         "Renata Glasc": "Renata"
     };
 
+
+
+
+
     const champImg = (name) => {
         if (!name) return "https://via.placeholder.com/64";
         if (dragonExceptions[name]) {
@@ -92,6 +97,8 @@ function TeamBlock({ title, color, team, setTeam, otherTeam, forceLastBard = fal
         }
         return `https://ddragon.leagueoflegends.com/cdn/15.20.1/img/champion/${key}.png`;
     };
+
+
 
     const { setTeam1, setTeam2 } = useBuild();
 
@@ -143,6 +150,8 @@ function TeamBlock({ title, color, team, setTeam, otherTeam, forceLastBard = fal
     };
 
     const displayTeam = (team && team.length > 0) ? team : Array(5).fill({ Name: null });
+
+
 
     return (
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
@@ -546,6 +555,228 @@ export default function BuildPlanner() {
         (item) => item.name !== "Dead Man's Plate" && item.name !== "Experimental Hexplate"
     );
 
+
+    const getTree = (keyShort) => {
+        const map = {
+            Dom: "Domination",
+            Insp: "Inspiration",
+            Sorc: "Sorcery",
+            Prec: "Precision",
+            Res: "Resolve"
+        };
+
+        return runesData.find(t => t.key === map[keyShort]);
+    };
+
+    const getRune = (tree, slotIndex, runeIndex) => {
+        return tree?.slots?.[slotIndex]?.runes?.[runeIndex - 1];
+    };
+
+    const parseRuneString = (str) => {
+        const [mainKey, k, s1, s2, s3, secKey, sec1, sec2] = str.split(",");
+
+        const mainTree = getTree(mainKey);
+        const secondaryTree = getTree(secKey);
+
+        const [secSlot1, secRune1] = sec1.split("-").map(Number);
+        const [secSlot2, secRune2] = sec2.split("-").map(Number);
+
+        return {
+            mainTree,
+            secondaryTree,
+
+            selections: {
+                keystone: Number(k),
+                main: [Number(s1), Number(s2), Number(s3)],
+                secondary: [
+                    { slot: secSlot1, rune: secRune1 },
+                    { slot: secSlot2, rune: secRune2 }
+                ]
+            }
+        };
+    };
+
+    const groupByKeystone = (setups) => {
+        const map = {};
+
+        setups.forEach(s => {
+            const parsed = parseRuneString(s);
+            const key = parsed.mainTree?.slots?.[0]?.runes?.[parsed.selections.keystone - 1]?.name;
+
+            if (!map[key]) map[key] = [];
+            map[key].push(s);
+        });
+
+        return map;
+    };
+
+    function RunePage({ setupString }) {
+        const data = parseRuneString(setupString);
+
+        if (!data.mainTree) return null;
+
+        return (
+            <div style={{
+                display: "flex",
+                gap: "20px",
+                background: "#111",
+                padding: "12px",
+                borderRadius: "10px"
+            }}>
+                {/* PRIMARY */}
+                <div>
+                    <img
+                        src={`https://ddragon.leagueoflegends.com/cdn/img/${data.mainTree.icon}`}
+                        style={{ width: "40px", marginBottom: "10px" }}
+                    />
+
+                    {/* Keystone */}
+                    <img
+                        src={`https://ddragon.leagueoflegends.com/cdn/img/${data.keystone.icon}`}
+                        style={{ width: "50px" }}
+                    />
+
+                    {/* 3 Main Runes */}
+                    {data.mainRunes.map((r, i) => (
+                        <img
+                            key={i}
+                            src={`https://ddragon.leagueoflegends.com/cdn/img/${r.icon}`}
+                            style={{ width: "35px", display: "block", marginTop: "6px" }}
+                        />
+                    ))}
+                </div>
+
+                {/* SECONDARY */}
+                <div>
+                    <img
+                        src={`https://ddragon.leagueoflegends.com/cdn/img/${data.secondaryTree.icon}`}
+                        style={{ width: "40px", marginBottom: "10px" }}
+                    />
+
+                    {data.secondaryRunes.map((r, i) => (
+                        <img
+                            key={i}
+                            src={`https://ddragon.leagueoflegends.com/cdn/img/${r.icon}`}
+                            style={{ width: "35px", display: "block", marginTop: "6px" }}
+                        />
+                    ))}
+                </div>
+            </div>
+        );
+    }
+
+    const RuneIcon = ({ rune, active, size = 40 }) => {
+        return (
+            <img
+                src={`https://ddragon.leagueoflegends.com/cdn/img/${rune.icon}`}
+                alt={rune.name}
+                style={{
+                    width: size,
+                    height: size,
+                    borderRadius: "50%",
+                    filter: active ? "none" : "grayscale(100%) brightness(40%)",
+                    opacity: active ? 1 : 0.5,
+                    transition: "all 0.2s",
+                    boxShadow: active ? "0 0 10px rgba(255,255,255,0.4)" : "none",
+                }}
+            />
+        );
+    };
+
+    function RuneTree({ tree, selections, isPrimary }) {
+        return (
+            <div style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: "10px",
+                background: "#0f0f0f",
+                padding: "10px",
+                borderRadius: "10px"
+            }}>
+                {/* Tree Icon */}
+                <img
+                    src={`https://ddragon.leagueoflegends.com/cdn/img/${tree.icon}`}
+                    style={{ width: "50px", marginBottom: "5px" }}
+                />
+
+                {tree.slots.map((slot, slotIndex) => (
+                    <div
+                        key={slotIndex}
+                        style={{
+                            display: "flex",
+                            gap: "8px",
+                            justifyContent: "center"
+                        }}
+                    >
+                        {slot.runes.map((rune, runeIndex) => {
+                            let active = false;
+
+                            if (isPrimary) {
+                                if (slotIndex === 0) {
+                                    active = selections.keystone === runeIndex + 1;
+                                } else {
+                                    active = selections.main[slotIndex - 1] === runeIndex + 1;
+                                }
+                            } else {
+                                active = selections.secondary.some(
+                                    s => s.slot === slotIndex && s.rune === runeIndex + 1
+                                );
+                            }
+
+                            return (
+                                <RuneIcon
+                                    key={rune.id}
+                                    rune={rune}
+                                    active={active}
+                                    size={slotIndex === 0 ? 50 : 36}
+                                />
+                            );
+                        })}
+                    </div>
+                ))}
+            </div>
+        );
+    }
+
+    function RunePageFull({ setupString }) {
+        const data = parseRuneString(setupString);
+        if (!data) return null;
+
+        return (
+            <div style={{
+                display: "flex",
+                gap: "30px",
+                background: "#111",
+                padding: "15px",
+                borderRadius: "12px",
+                border: "1px solid #333"
+            }}>
+                {/* PRIMARY */}
+                <RuneTree
+                    tree={data.mainTree}
+                    selections={data.selections}
+                    isPrimary={true}
+                />
+
+                {/* SECONDARY */}
+                <RuneTree
+                    tree={data.secondaryTree}
+                    selections={data.selections}
+                    isPrimary={false}
+                />
+            </div>
+        );
+    }
+
+    const runeSetups = [
+        "Dom,1,1,3,1,Insp,1-2,3-3",
+        "Dom,1,1,3,3,Insp,1-2,3-3",
+        "Res,1,1,3,3,Insp,1-2,3-3"
+    ];
+
+    const grouped = groupByKeystone(runeSetups);
+
     return (
         <div style={{display: "flex", flexDirection: "row", gap: "80px", margin: "20px"}}>
 
@@ -788,6 +1019,7 @@ export default function BuildPlanner() {
                     </div>
                 </div>
 
+
                 {/* Build Roster */}
                 <div style={{marginTop: "0px", marginBottom: "300px"}}>
                     <h3 style={{
@@ -841,6 +1073,18 @@ export default function BuildPlanner() {
                 `}
                 </style>
             </div>
+
+            <div style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "20px",
+                alignItems: "center"
+            }}>
+                {runeSetups.map((s, i) => (
+                    <RunePageFull key={i} setupString={s}/>
+                ))}
+            </div>
+
 
             {/* Rechte Seite – Teams nebeneinander */}
             <div style={{display: "flex", flexDirection: "row", gap: "40px", alignItems: "flex-start"}}>

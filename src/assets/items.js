@@ -116,14 +116,14 @@ export const items = [
         desc: "Mixed Dmg - You need to frontline",
         categories: ["Mixed Dmg", "Long Fights", "Team lacks tankiness", "Ahead"],
     },
-    /*{
+    {
         name: "Redemption",
         img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3107.png",
-        x: -240,
-        y: 245,
+        x: -110,
+        y: 225,
         desc: "In place Fight (e.g. J4) - Tip: Can time with ult",
         categories: ["Much AOE", "Heavy Frontline", "Ahead"],
-    },*/
+    },
     {
         name: "Mikael's Blessing",
         img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3222.png",
