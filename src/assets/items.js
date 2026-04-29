@@ -5,6 +5,30 @@ import Protoplasm from "../../images/Protoplasm.png";
 
 export const items = [
     {
+        name: "Moonstone Renewer",
+        img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/7021.png",
+        x: 0,
+        y: 0,
+        desc: "",
+        categories: [""]
+    },
+    {
+        name: "Staff of Flowing Water",
+        img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/6616.png",
+        x: 0,
+        y: 0,
+        desc: "",
+        categories: [""]
+    },
+    {
+        name: "Ardent Censer",
+        img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3504.png",
+        x: 0,
+        y: 0,
+        desc: "",
+        categories: [""]
+    },
+    {
         name: "Wits End",
         img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3091.png",
         x: 60,
@@ -44,14 +68,14 @@ export const items = [
         desc: "Big lead - Reposition for Q",
         categories: ["Ahead"],
     },
-    {
+    /*{ JUST NOT GOOD ANYMORE DUE TO LOSING 3 PROCS AND BARD NOT HAVING ON-HIT
         name: "Statikk Shiv",
         img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3087.png",
         x: 410,
         y: -240,
         desc: "Lack Waveclear - Teamfights",
         categories: ["Team lacks Waveclear", "Heavy Frontline", "Need Dmg", "Behind"],
-    },
+    },*/
     {
         name: "Zhonya's Hourglass",
         img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/223157.png",

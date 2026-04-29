@@ -28,8 +28,8 @@
             "key": "HailOfBlades",
             "icon": "perk-images/Styles/Domination/HailOfBlades/HailOfBlades.png",
             "name": "Hail of Blades",
-            "shortDesc": "Gain a large amount of Attack Speed for the first 3 attacks made against enemy champions.",
-            "longDesc": "Gain 160% (80% for ranged champions) Attack Speed when you attack an enemy champion for up to 3 attacks.\u003Cbr\u003E\u003Cbr\u003ENo more than 3s can elapse between attacks or this effect will end.\u003Cbr\u003E\u003Cbr\u003ECooldown: 10s.\u003Cbr\u003E\u003Cbr\u003E\u003Crules\u003EAttack resets increase the attack limit by 1.\u003Cbr\u003EAllows you to temporarily exceed the Attack Speed limit.\u003C/rules\u003E"
+            "shortDesc": "Gain a large amount of Attack Speed and \u003CtrueDamage\u003Ebonus true damage\u003C/trueDamage\u003E for the first 3 attacks made against enemy champions.",
+            "longDesc": "Gain 120% (60% for ranged champions) Attack Speed and \u003CtrueDamage\u003Ebonus true damage\u003C/trueDamage\u003E when you attack an enemy champion for up to 3 attacks.\u003Cbr\u003E\u003Cbr\u003ENo more than 3s can elapse between attacks or this effect will end.\u003Cbr\u003E\u003Cbr\u003ECooldown: 10s.\u003Cbr\u003EOn-Hit Damage: 4 - 20 (+0.08 bonus AD, +0.06 AP) damage.\u003Cbr\u003E\u003Cbr\u003E\u003Crules\u003EAttack resets increase the attack limit by 1.\u003Cbr\u003EAllows you to temporarily exceed the Attack Speed limit.\u003C/rules\u003E"
           }
         ]
       },
@@ -177,7 +177,7 @@
             "icon": "perk-images/Styles/Inspiration/CashBack/CashBack2.png",
             "name": "Cash Back",
             "shortDesc": "Get some gold back when you purchase Legendary Items.",
-            "longDesc": "Get 8% Gold back when you purchase Legendary Items."
+            "longDesc": "Get 7.5% Gold back when you purchase Legendary Items."
           }
         ]
       },
@@ -408,7 +408,7 @@
             "key": "Demolish",
             "icon": "perk-images/Styles/Resolve/Demolish/Demolish.png",
             "name": "Demolish",
-            "shortDesc": "Your third attack against turrets deals HP-based bonus damage.",
+            "shortDesc": "Your third attack against turrets deals bonus damage.",
             "longDesc": "Your third attack against towers deals [85 (+28% max Health) Melee || 50 (+20% max Health) Ranged] bonus physical damage.\u003Cbr\u003E\u003Cbr\u003ECooldown: 30s"
           },
           {
@@ -509,15 +509,23 @@
             "icon": "perk-images/Styles/Sorcery/ArcaneComet/ArcaneComet.png",
             "name": "Arcane Comet",
             "shortDesc": "Damaging a champion with an ability hurls a damaging comet at their location.",
-            "longDesc": "Damaging a champion with an ability hurls a comet at their location, or, if Arcane Comet is on cooldown, reduces its remaining cooldown.\u003Cbr\u003E\u003Cbr\u003E\u003Clol-uikit-tooltipped-keyword key='LinkTooltip_Description_AdaptiveDmg'\u003E\u003Cfont color='#48C4B7'\u003EAdaptive Damage\u003C/font\u003E\u003C/lol-uikit-tooltipped-keyword\u003E: 30 - 130 based on level (\u003CscaleAP\u003E+0.05 AP\u003C/scaleAP\u003E and \u003CscaleAD\u003E+0.1 bonus AD\u003C/scaleAD\u003E)\u003Cbr\u003ECooldown: 20 - 8s\u003Cbr\u003E\u003Crules\u003E\u003Cbr\u003ECooldown Reduction:\u003Cbr\u003ESingle Target: 20%.\u003Cbr\u003EArea of Effect: 10%.\u003Cbr\u003EDamage over Time: 5%.\u003Cbr\u003E\u003C/rules\u003E"
+            "longDesc": "Damaging a champion with an ability hurls a comet at their location, dealing increased damage based on distance.\u003Cbr\u003E\u003Cbr\u003E\u003Clol-uikit-tooltipped-keyword key='LinkTooltip_Description_AdaptiveDmg'\u003E\u003Cfont color='#48C4B7'\u003EAdaptive Damage\u003C/font\u003E\u003C/lol-uikit-tooltipped-keyword\u003E: 15 - 100 based on level (\u003CscaleAP\u003E+0.05 AP\u003C/scaleAP\u003E and \u003CscaleAD\u003E+0.1 bonus AD\u003C/scaleAD\u003E)\u003Cbr\u003ECooldown: 20 - 8s\u003Cbr\u003E\u003Crules\u003E\u003Cbr\u003EDamage amplification scales up to 100% at 750 range.\u003Cbr\u003E\u003C/rules\u003E"
           },
           {
             "id": 8230,
             "key": "PhaseRush",
-            "icon": "perk-images/Styles/Sorcery/PhaseRush/PhaseRush.png",
-            "name": "Phase Rush",
-            "shortDesc": "Hitting an enemy champion with 3 \u003Cb\u003Eseparate\u003C/b\u003E attacks or abilities grants a burst of \u003Clol-uikit-tooltipped-keyword key='LinkTooltip_Description_MS'\u003EMS\u003C/lol-uikit-tooltipped-keyword\u003E and Slow Resist. ",
-            "longDesc": "Hitting an enemy champion with 3 attacks or \u003Cb\u003Eseparate\u003C/b\u003E abilities within 4s grants \u003Cspeed\u003E25 - 50% Move Speed\u003C/speed\u003E based on level and \u003Cstatus\u003E50% Slow Resistance\u003C/status\u003E for 3s. Move Speed is 75% effective for ranged champions.\u003Cbr\u003ECooldown: 30s - 10s"
+            "icon": "perk-images/Styles/Sorcery/PhaseRush/StormraidersSurgeRuneIcon2.png",
+            "name": "Stormraider's Surge",
+            "shortDesc": "Dealing 25% of a champion's maximum health grants a burst of \u003Clol-uikit-tooltipped-keyword key='LinkTooltip_Description_MS'\u003EMS\u003C/lol-uikit-tooltipped-keyword\u003E and Slow Resist. ",
+            "longDesc": "Dealing 25% of a champion's maximum health within 3s grants \u003Cspeed\u003E40% Move Speed\u003C/speed\u003E and \u003Cstatus\u003E50% Slow Resistance\u003C/status\u003E for 3s. Move Speed is 75% effective for ranged champions.\u003Cbr\u003ECooldown: 20s - 10s"
+          },
+          {
+            "id": 8992,
+            "key": "DeathfireTouch",
+            "icon": "perk-images/Styles/Sorcery/DeathfireTouch/DEATHFIRE_TOUCH_KEYSTONE.png",
+            "name": "Deathfire Touch",
+            "shortDesc": "Damaging a champion with an ability burns them over time.",
+            "longDesc": "Damaging a champion with an ability burns them for 1 - 10 based on level (+\u003CscaleAP\u003E0.03 AP\u003C/scaleAP\u003E) (+\u003CscaleAD\u003E0.08 bonus AD\u003C/scaleAD\u003E)  adaptive damage per second. After burning for 3 seconds, the damage of the burn increases by 100% while they remain on fire.\u003Cbr\u003E\u003Crules\u003E\u003Cbr\u003EDuration:\u003Cbr\u003ESingle Target: 4s.\u003Cbr\u003EArea of Effect: 2s\u003Cbr\u003EDamage over Time: 1s\u003Cbr\u003E\u003C/rules\u003E"
           }
         ]
       },
