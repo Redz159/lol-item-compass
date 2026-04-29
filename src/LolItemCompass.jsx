@@ -70,11 +70,18 @@ export default function LoLItemCompass() {
         setSelectedFilters([]);
     };
 
+    const alwaysExcludedItems = [
+        "Ardent Censer",
+        "Staff of Flowing Water",
+        "Moonstone Renewer"
+    ];
+
     const filteredItems =
         !filtersEnabled || selectedFilters.length === 0
-            ? items
-            : items.filter((item) =>
-                item.categories.some((c) => selectedFilters.includes(c))
+            ? items.filter(item => !alwaysExcludedItems.includes(item.name))
+            : items.filter(item =>
+                item.categories.some(c => selectedFilters.includes(c)) &&
+                !alwaysExcludedItems.includes(item.name)
             );
 
 
@@ -194,6 +201,7 @@ export default function LoLItemCompass() {
                 {/* Items */}
                 {/* Weighs niche situations more than general ones*/}
                 {filteredItems.map((item) => {
+                    //if()
 
                     let matchScore = 0;
                     if (filtersEnabled) {

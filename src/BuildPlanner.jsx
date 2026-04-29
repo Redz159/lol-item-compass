@@ -337,6 +337,9 @@ export default function BuildPlanner() {
         ];
         switchToRuneSetup("Dom,1,1,3,1,Insp,1-2,3-3, Default very reliable")
         setBuildRoster(enchanterDefaultRoster);
+        handleItemClick(items.find((i) => i.name === "Staff of Flowing Water"));
+        handleItemClick(items.find((i) => i.name === "Ardent Censer"));
+        handleItemClick(items.find((i) => i.name === "Moonstone Renewer"));
     };
     const handleBruiser = () => {
         //setViableItems([]);
@@ -372,6 +375,7 @@ export default function BuildPlanner() {
         ];
         switchToRuneSetup("Dom,1,1,3,1,Insp,1-2,3-3, Default very reliable")
         setBuildRoster(tankDefaultRoster);
+
     };
 
 
@@ -556,8 +560,16 @@ export default function BuildPlanner() {
         setSelectedBoot(boot.name);
     };
 
+    const AlwaysExcludedItems = [
+        "Ardent Censer",
+        "Moonstone Renewer",
+        "Dead Man's Plate",
+        "Experimental Hexplate",
+        "Staff of Flowing Water"
+    ];
+
     const filteredItems = items.filter(
-        (item) => item.name !== "Dead Man's Plate" && item.name !== "Experimental Hexplate"
+        (item) => !AlwaysExcludedItems.includes(item.name)
     );
 
 
@@ -612,26 +624,29 @@ export default function BuildPlanner() {
     };
 
     const groupByKeystone = (setups) => {
-        const map = {};
+        const map = new Map(); // wichtig!
 
-        setups.forEach(s => {
+        setups.forEach((s) => {
             const parsed = parseRuneString(s);
-            const key = parsed.keystone?.id; // besser als name!
 
-            if (!map[key]) {
-                map[key] = {
-                    keystone: parsed.keystone,
+            // ⚠️ WICHTIG: keystone fehlt bei dir komplett!
+            const keystone = getRune(parsed.mainTree, 0, parsed.selections.keystone);
+            const key = keystone?.id;
+
+            if (!map.has(key)) {
+                map.set(key, {
+                    keystone,
                     setups: []
-                };
+                });
             }
 
-            map[key].setups.push({
+            map.get(key).setups.push({
                 raw: s,
                 parsed
             });
         });
 
-        return Object.values(map);
+        return Array.from(map.values());
     };
 
     const switchToRuneSetup = (setupString) => {
@@ -856,13 +871,15 @@ export default function BuildPlanner() {
     const runeSetups = [
         "Dom,1,1,3,1,Insp,1-2,3-3, Default very reliable",
         "Dom,1,1,3,2,Insp,1-2,3-3, Also really good, ms can be overkill",
-        "Prec,1,2,1,2,Insp,1-2,3-3, Dusk&Dawn Fun build",
+        "Sorc,4,3,2,1,Insp,1-2,3-3, ———————NOT TESTED A LOT———————— Deathfire seems to have comparable damage to Elec, but is weaker early and stronger late ",
         "Insp,2,2,3,3,Dom,2-3,3-2, Keria's Runepage - Really easy Lane, Not high Elec-Value",
-        "Sorc,1,3,2,1,Dom,1-1,3-2, ———————REALLY EXPERIMENTAL———————— Only with with Enchanter (perma proc aeary through Diadem)",
-        "Sorc,1,3,2,1,Dom,1-1,3-1, ———————REALLY EXPERIMENTAL———————— Only with with Enchanter (perma proc aeary through Diadem)",
+        "Sorc,4,1,1,1,Insp,1-2,3-3, ———————NOT TESTED A LOT———————— Deathfire seems to have comparable damage to Elec, but is weaker early and stronger late ",
         "Sorc,1,3,2,1,Res,1-2,3-2, ———————REALLY EXPERIMENTAL———————— Only with with Enchanter (perma proc aeary through Diadem)",
         "Sorc,1,3,2,1,Insp,1-2,3-1, ———————REALLY EXPERIMENTAL———————— Only with with Enchanter (perma proc aeary through Diadem)",
         "Sorc,1,3,2,1,Insp,1-2,3-3, ———————REALLY EXPERIMENTAL———————— Only with with Enchanter (perma proc aeary through Diadem)",
+        "Sorc,1,3,1,1,Dom,1-1,3-2, ———————REALLY EXPERIMENTAL———————— Only with with Enchanter (perma proc aeary through Diadem)",
+        "Sorc,1,3,2,1,Dom,1-1,3-1, ———————REALLY EXPERIMENTAL———————— Only with with Enchanter (perma proc aeary through Diadem)",
+        "Prec,1,2,1,2,Insp,1-2,3-3, Dusk&Dawn Fun build",
         "Res,3,2,3,3,Insp,1-2,3-3, Guardian not that good anymore",
         "Res,3,2,3,3,Dom,1-1,3-2, Guardian not that good anymore",
     ];
