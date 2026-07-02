@@ -60,14 +60,14 @@ export const items = [
         desc: "HP Stackers - Meele Frontline",
         categories: ["Heavy Frontline", "Enemy team tanky", "Need Dmg", "Behind"],
     },
-    {
+    /*{
         name: "Experimental Hexplate",
         img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/7036.png",
         x: 360,
         y: -190,
         desc: "Big lead - Reposition for Q",
         categories: ["Ahead"],
-    },
+    },*/
     /*{ JUST NOT GOOD ANYMORE DUE TO LOSING 3 PROCS AND BARD NOT HAVING ON-HIT
         name: "Statikk Shiv",
         img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3087.png",
