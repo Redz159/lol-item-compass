@@ -322,7 +322,7 @@ export default function BuildPlanner() {
         setBuildRoster(defaultRoster);
     };
     const handleEnchanter = () => {
-        //setViableItems([]);
+        setViableItems([]);
         //setExcludedItems([]);
         setSelectedBoot("Boots of Speed");
 
@@ -341,7 +341,7 @@ export default function BuildPlanner() {
         handleItemClick(items.find((i) => i.name === "Ardent Censer"));
         handleItemClick(items.find((i) => i.name === "Moonstone Renewer"));
     };
-    const handleBruiser = () => {
+    /* const handleBruiser = () => {
         //setViableItems([]);
         //setExcludedItems([]);
         setSelectedBoot(null);
@@ -358,9 +358,9 @@ export default function BuildPlanner() {
 
         switchToRuneSetup("Prec,1,2,1,2,Insp,1-2,3-3, Dusk&Dawn Fun build")
         setBuildRoster(bruiserDefaultRoster);
-    };
+    }; */
     const handleDefault = () => {
-        //setViableItems([]);
+        setViableItems([]);
         //setExcludedItems([]);
         setSelectedBoot(null);
 
@@ -368,8 +368,8 @@ export default function BuildPlanner() {
         const tankDefaultRoster = [
             { name: "Bloodsong", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3877.png", fixed: true },
             { name: "Dead Man's Plate", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3742.png", fixed: true },
-            { name: "Bandlepipes", img: Bandlepipes, fixed: true },
-            null,
+            { name: "Imperial Mandate", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/4005.png", fixed: true },
+            { name: "Abyssal Mask", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/8020.png", fixed: true },
             null,
             null,
         ];
@@ -377,6 +377,30 @@ export default function BuildPlanner() {
         setBuildRoster(tankDefaultRoster);
 
     };
+    const handleUtility = () => {
+        setViableItems([]);
+        handleItemClick(items.find((i) => i.name === "Dead Man's Plate"));
+        handleItemClick(items.find((i) => i.name === "Mikael's Blessing"));
+        handleItemClick(items.find((i) => i.name === "Imperial Mandate"));
+        handleItemClick(items.find((i) => i.name === "Abyssal Mask"));
+        //setExcludedItems([]);
+        setSelectedBoot("Boots of Speed");
+
+        // Setze Build Roster mit Default-Regeln
+        const tankDefaultRoster = [
+            { name: "Solstice Sleigh", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3876.png", fixed: true },
+            { name: "Locket of the Iron Solari", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3190.png", fixed: true },
+            { name: "Boots of Speed", img: "https://ddragon.leagueoflegends.com/cdn/14.10.1/img/item/3009.png", fixed: true },
+            null,
+            null,
+            null,
+        ];
+
+        switchToRuneSetup("Dom,1,1,3,1,Insp,1-2,3-3, Default very reliable")
+        setBuildRoster(tankDefaultRoster);
+
+    };
+
 
 
 
@@ -871,22 +895,23 @@ export default function BuildPlanner() {
     const runeSetups = [
         "Dom,1,1,3,1,Insp,1-2,3-3, Default very reliable",
         "Dom,1,1,3,2,Insp,1-2,3-3, Also really good, ms can be overkill",
-        "Sorc,4,3,2,1,Insp,1-2,3-3, ———————NOT TESTED A LOT———————— Deathfire seems to have comparable damage to Elec, but is weaker early and stronger late ",
-        "Insp,2,2,3,3,Dom,2-3,3-2, Keria's Runepage - Really easy Lane, Not high Elec-Value",
-        "Sorc,4,1,1,1,Insp,1-2,3-3, ———————NOT TESTED A LOT———————— Deathfire seems to have comparable damage to Elec, but is weaker early and stronger late ",
+        "Dom,1,1,3,1,Insp,1-2,3-1, Cosmic insight alternative when you want a lot of activ Items",
+        "Dom,1,1,3,2,Insp,1-2,3-1, Cosmic insight alternative when you want a lot of activ Items",
+        "Insp,2,2,3,3,Dom,2-3,3-2, Not really good - May take when: Really easy Lane + Not high Elec-Value",
+        "Insp,2,2,3,1,Dom,2-3,3-2, Not really good - May take when: Really easy Lane + Not high Elec-Value",
         "Sorc,1,3,2,1,Res,1-2,3-2, ———————REALLY EXPERIMENTAL———————— Only with with Enchanter (perma proc aeary through Diadem)",
         "Sorc,1,3,2,1,Insp,1-2,3-1, ———————REALLY EXPERIMENTAL———————— Only with with Enchanter (perma proc aeary through Diadem)",
         "Sorc,1,3,2,1,Insp,1-2,3-3, ———————REALLY EXPERIMENTAL———————— Only with with Enchanter (perma proc aeary through Diadem)",
         "Sorc,1,3,1,1,Dom,1-1,3-2, ———————REALLY EXPERIMENTAL———————— Only with with Enchanter (perma proc aeary through Diadem)",
         "Sorc,1,3,2,1,Dom,1-1,3-1, ———————REALLY EXPERIMENTAL———————— Only with with Enchanter (perma proc aeary through Diadem)",
-        "Prec,1,2,1,2,Insp,1-2,3-3, Dusk&Dawn Fun build",
-        "Res,3,2,3,3,Insp,1-2,3-3, Guardian not that good anymore",
-        "Res,3,2,3,3,Dom,1-1,3-2, Guardian not that good anymore",
+        /*"Prec,1,2,1,2,Insp,1-2,3-3, Dusk&Dawn Fun build (NOT RECOMMENDED)",*/
+        "Res,3,2,3,3,Insp,1-2,3-3, Fine defensive alternative",
+        "Res,3,2,3,3,Dom,1-1,3-2, Fine defensive alternative",
     ];
 
     const grouped = groupByKeystone(runeSetups);
 
-    const [selectedKeystone, setSelectedKeystone] = useState(grouped[1]?.keystone.id);
+    const [selectedKeystone, setSelectedKeystone] = useState(grouped[0]?.keystone.id);
     const [selectedIndex, setSelectedIndex] = useState(0);
     const activeGroup = grouped.find(g => g.keystone.id === selectedKeystone);
 
@@ -932,6 +957,22 @@ export default function BuildPlanner() {
                 </button>
 
                 <button
+                    onClick={handleUtility}
+                    style={{
+                        background: "linear-gradient(90deg, #FFD76B, #B87809)",
+                        border: "none",
+                        borderRadius: "8px",
+                        padding: "6px 12px",
+                        color: "black",
+                        cursor: "pointer",
+                        marginBottom: "12px",
+                        marginLeft: "8px",
+                    }}
+                >
+                    🫂Utility
+                </button>
+
+                <button
                     onClick={handleEnchanter}
                     style={{
                         background: "linear-gradient(90deg, #46ACFD, #52F2A4)",
@@ -947,7 +988,7 @@ export default function BuildPlanner() {
                     ❤️‍🩹 Enchanter
                 </button>
 
-                <button
+                {/* <button
                     onClick={handleBruiser}
                     style={{
                         background: "linear-gradient(90deg, #5259D8, #D2BE9F)",
@@ -961,7 +1002,7 @@ export default function BuildPlanner() {
                     }}
                 >
                     ⚔️ Bruiser
-                </button>
+                </button> */}
 
                 {/* Item Grid */}
                 <div style={{marginTop: "8px"}}>
